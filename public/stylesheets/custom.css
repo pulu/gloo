@@ -3,7 +3,7 @@ header img {
   background: #fff;
 }
 nav {
-  float: none;
+  float: right;
 }
 
 nav ul {
@@ -14,4 +14,19 @@ nav ul {
 nav ul li {
   display: inline-block;
   text-decoration: none;
+}
+
+/* footer nav */
+footer {
+  text-align: center;
+  margin: auto;
+}
+
+footer nav {
+  float: none;
+}
+
+.search {
+  text-align: center;  
+  margin: auto;
 }
