@@ -2,7 +2,7 @@ module ApplicationHelper
   
   # return a title based on the page
   def title
-    base_title = "PULU"
+    base_title = "GLOO"
     if @title.nil?
       base_title
     else
