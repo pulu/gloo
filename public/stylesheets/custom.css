@@ -1,0 +1,17 @@
+header img {
+  padding: 10px;
+  background: #fff;
+}
+nav {
+  float: none;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  text-decoration: none;
+}
