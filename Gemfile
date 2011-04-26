@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.5'
 gem 'sqlite3-ruby','1.2.4',:require => 'sqlite3'
 gem 'gravatar_image_tag'
+gem 'paperclip'
 
 group :development do
   gem 'rspec-rails','2.5.0'
