@@ -10,7 +10,7 @@ class CreateHorses < ActiveRecord::Migration
       t.string  :foal_country
       t.string  :color
       t.string  :breed
-      t.boolean :stallion
+      t.string  :gender
       t.string  :vet_report_file_name
       t.string  :xray_file_name
       t.string  :dna_test_file_name
