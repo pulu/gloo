@@ -1,10 +1,14 @@
 <%= form_for(@horse, :html => {:multipart => true}) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
   <div class="field">
-    <%= f.label :name  %> <%= f.text_field :name %>
-    <%= f.label :breed %> <%= f.text_field :breed %>
-    <%= f.label :color %> <%= f.text_field :color %>
-    <%= f.label :photo %> <%= f.file_field :photo %>
+  <table>
+    <tr><td><%= :name %></td><td><%= f.text_field :name %></td></tr>
+    <tr><td><%= :breed %></td><td><%= f.text_field :breed %></td></tr>
+    <tr><td><%= :color %></td><td><%= f.text_field :color %></td></tr>
+    <tr><td><%= :gender %></td><td><%= f.text_field :gender %></td></tr>
+    <tr><td><%= :owner %></td><td><%= f.text_field :owner %></td></tr>
+    <tr><td><%= :photo %></td><td><%= f.file_field :photo %></td></tr>
+  </table>
   </div>
 
   <div class="actions">

@@ -2,12 +2,16 @@ module HorsesHelper
   
   # return the sire of the horse
   def sire
-    @sire = Horse.find(@horse.sire_id)
+    sid = @horse.sire_id
+    sid = (1..10).to_a.shuffle.first unless sid
+    @sire = Horse.find(sid)
   end
 
   #return the dam of the horse
   def dam
-    @dam = Horse.find(@horse.dam_id)
+    did = @horse.dam_id
+    did = (1..10).to_a.shuffle.first unless did
+    @dam = Horse.find(did)
   end
 
 end
