@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110426190831) do
+ActiveRecord::Schema.define(:version => 20110428220020) do
 
   create_table "horses", :force => true do |t|
     t.string   "name"
@@ -22,16 +22,16 @@ ActiveRecord::Schema.define(:version => 20110426190831) do
     t.string   "foal_country"
     t.string   "color"
     t.string   "breed"
-    t.boolean  "stallion"
     t.string   "vet_report_file_name"
     t.string   "xray_file_name"
-    t.string   "dna_test_fname"
+    t.string   "dna_test_file_name"
     t.string   "registration_file_name"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "gender"
   end
 
   create_table "users", :force => true do |t|

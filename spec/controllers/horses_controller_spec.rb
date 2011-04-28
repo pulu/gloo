@@ -14,6 +14,18 @@ describe HorsesController do
       response.should have_selector("title", :content => "Horses")
     end
 
+    describe "GET 'edit'" do
+      before(:each) do
+        @horse = Factory(:horse)
+      end
+
+      it "should be successsful" do
+        get :edit, :id => @horse
+        response.should be_success
+      end
+
+    end
+
   end
 
 end

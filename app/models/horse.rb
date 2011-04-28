@@ -29,11 +29,20 @@ class Horse < ActiveRecord::Base
   # Paperclip
   has_attached_file :photo,
     :styles => {
-      :thumb => "100x80#",
-      :medium => "400x320"
-     }
+      :thumb => "40x32#",
+      :small => "100x80",
+      :medium => "400x320>"
+     },
+     :url => "/images/photos/:basename.:style.:extension",
+     :path => ":rails_root/public/images/photos/:basename.:style.:extension"
   has_attached_file :vet_report
   has_attached_file :xray 
   has_attached_file :dna_test
   has_attached_file :registration
+  # attr_protected :photo_file_name, :photo_content_type, :photo_size
+
+  #validation
+  validates :name, :presence => true,
+                   :uniqueness => true
+
 end

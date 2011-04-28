@@ -1,0 +1,38 @@
+<div class="span-18 colborder">
+  <h2 align="center"><%= @horse.name %></h2>
+  <nav align="right">
+    <%= link_to 'Edit', edit_horse_path(@horse), :class => "quiet" %> |
+    <%= link_to 'Back', horses_path, :class => "quiet" %>
+  </nav>
+
+  <div class="span-7 colborder">
+  <h3 align="center">Ancestry</h3>
+  <% @sire = sire %>
+  <h5>Sire: <%= @sire.name %></h5>
+    <% sire_image = image_tag @sire.photo.url(:small) %>
+    <%= link_to sire_image, @sire %>
+    <p><b>Owner: </b><tab><%= @sire.owner %></p>
+    <hr>
+
+  <% @dam = dam %>
+  <h5>Dam: <%= @dam.name %> </h5>
+    <% dam_image = image_tag @dam.photo.url(:small) %>
+    <%= link_to dam_image, @dam %>
+    <p><b>Owner: </b><tab><%= @dam.owner %><p>
+  </div>
+
+  <div class="span-10 last">
+    <%= image_tag @horse.photo.url(:medium) %>
+  
+    <table>
+      <tr><td><b>Name:</b></td><td><%= @horse.name %></td></tr>
+      <tr><td><b>Breed:</b></td><td><%= @horse.breed %></td></tr>
+      <tr><td><b>Color:</b></td><td><%= @horse.color %></td></tr>
+      <tr><td><b>Owner:</b></td><td><%= @horse.owner %></tr</td>
+      <tr><td><b>Gender:</b></td><td><%= @horse.gender %></td></tr>
+      <tr><td><b>Breeder:</b></td><td><%= @horse.breeder_id %></td></tr>
+    </table>
+  </div>
+
+</div>
+<%= render 'sidebar' %>

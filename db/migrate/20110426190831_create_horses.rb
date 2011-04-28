@@ -13,7 +13,7 @@ class CreateHorses < ActiveRecord::Migration
       t.boolean :stallion
       t.string  :vet_report_file_name
       t.string  :xray_file_name
-      t.string  :dna_test_fname
+      t.string  :dna_test_file_name
       t.string  :registration_file_name
       t.string  :photo_file_name
       t.string  :photo_content_type

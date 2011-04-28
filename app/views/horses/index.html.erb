@@ -1,0 +1,25 @@
+<h1>Horses</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Breed</th>
+    <th>Color</th>
+    <th>Image</th>
+  </tr>
+
+  <% @horses.each do |horse| %>
+    <tr>
+      <td><%= horse.name %></td>
+      <td><%= horse.breed %></td>
+      <td><%= horse.color %></td>
+      <td><%= image_tag horse.photo.url(:thumb) %></td>
+      <td><%= link_to 'Show', horse %></td>
+      <td><%= link_to 'Edit', edit_horse_path(horse) %></td>
+      <td><%= link_to 'Destroy', horse, :method => :delete,
+                                        :confirm => 'Are you sure?', 
+                                        :title => "Delete #{horse.name}" %></td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate %>
