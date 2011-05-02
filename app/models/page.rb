@@ -1,9 +1,14 @@
-def horses
-  @horses = Horse.all( :conditions => conditions )
-end
+class Page < ActiveRecord::Base
+  #----------------------
+  def self.search(search)
+    if search && search.length > 0
+      @horses = Horse.all(:conditions =>['name LIKE ?',"%#{search}%"])
+      @players = Player.all(:conditions =>['name LIKE ?',"%#{search}%"])
+    else  
+      @horses = []
+      @players = []
+    end
+    @pages = @horses + @players
+  end
 
-private
-
-def conditions 
-  ["horses.name LIKE ?", "%#{keywords}%"] unless keywords.blank?
 end

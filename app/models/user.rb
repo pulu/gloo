@@ -16,4 +16,17 @@ class User < ActiveRecord::Base
   validates :name,  :presence => true
   validates :email, :presence => true,
                     :uniqueness => true
+
+  #----------------------
+  def self.search(search)
+ 
+    if search
+      @horses = Horse.all(:conditions =>['name LIKE ?',"%#{search}%"])
+      @players = Player.all(:conditions =>['name LIKE ?',"%#{search}%"])
+    end
+
+    @page = @horses + @players
+
+  end
+
 end

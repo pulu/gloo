@@ -1,14 +1,10 @@
 class PagesController < ApplicationController
 
   def index 
-    @horses = Horse.all() 
-    @title = "Search"
-  end
-
-  def home
+    @pages = Page.search( params[:search] )
     @title = "Home"
   end
-  
+
   def contact
     @title = "Contact"
   end

@@ -5,12 +5,12 @@ Pulu::Application.routes.draw do
   match '/horses',    :to => 'horses#new'
   match '/signup',     :to => 'users#new'
 
-  match '/pages',     :to => 'pages#new'
+  match '/pages',     :to => 'pages#index'
   match '/contact',   :to => 'pages#contact' 
   match '/about',     :to => 'pages#about' 
   match '/help',      :to => 'pages#help' 
 
-  root                :to => 'pages#home'
+  root                :to => 'pages#index'
 
 # The priority is based upon order of creation:
   # first created -> highest priority.
