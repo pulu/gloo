@@ -1,9 +1,12 @@
 Pulu::Application.routes.draw do
-  resources :users, :horses
+  get "players/new"
 
+  resources :pages, :users, :horses, :players
+  
   match '/horses',    :to => 'horses#new'
   match '/signup',     :to => 'users#new'
 
+  match '/pages',     :to => 'pages#new'
   match '/contact',   :to => 'pages#contact' 
   match '/about',     :to => 'pages#about' 
   match '/help',      :to => 'pages#help' 

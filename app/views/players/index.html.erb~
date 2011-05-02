@@ -1,0 +1,30 @@
+<nav align="right">
+  <%= link_to 'Add', new_player_path, :class => "quiet" %>
+</nav>
+<h1>Polo Players</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Nationality</th>
+    <th>Team</th>
+    <th>Handicap</th>
+    <th>Image</th>
+  </tr>
+
+  <% @players.each do |player| %>
+    <tr>
+      <td><%= player.name %></td>
+      <td><%= player.country %></td>
+      <td><%= player.team %></td>
+      <td><%= player.handicap %></td>
+      <td><%= image_tag player.photo.url(:thumb) %></td>
+      <td><%= link_to 'Show', player %></td>
+      <td><%= link_to 'Edit', edit_player_path(player) %></td>
+      <td><%= link_to 'Delete', horse, :method => :delete,
+                                        :confirm => 'Are you sure?', 
+                                        :title => "Delete #{player.name}" %></td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate %>

@@ -1,0 +1,20 @@
+<%= form_for(@player, :html => {:multipart => true}) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <div class="field">
+  <table>
+    <tr><td><%= :name %></td><td><%= f.text_field :name %></td></tr>
+    <tr><td><%= :country %></td><td><%= f.text_field :country %></td></tr>
+    <tr><td><%= :team %></td><td><%= f.text_field :team %></td></tr>
+    <tr><td><%= :handicap %></td><td><%= f.text_field :handicap %></td></tr>
+    <tr><td><%= :age %></td><td><%= f.text_field :age %></td></tr>
+    <tr><td><%= :email %></td><td><%= f.text_field :email %></td></tr>
+    <tr><td><%= :tel %></td><td><%= f.text_field :tel %></td></tr>
+    <tr><td><%= :photo %></td><td><%= f.file_field :photo %></td></tr>
+  </table>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %><br />
+  </div>
+
+<% end %>

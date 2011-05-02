@@ -1,0 +1,27 @@
+<div class="span-18 colborder">
+  <h2 align="center"><%= @player.name %></h2>
+  <nav align="right">
+    <%= link_to 'Edit', edit_player_path(@player), :class => "quiet" %> |
+    <%= link_to 'Back', player_path, :class => "quiet" %>
+  </nav>
+
+  <div class="span-7 colborder">
+  <h3 align="center">Tournaments</h3>
+  </div>
+
+  <div class="span-10 last">
+    <%= image_tag @player.photo.url(:medium) %>
+  
+    <table>
+      <tr><td><b>Name:</b></td><td><%= @player.name %></td></tr>
+      <tr><td><b>Nationality:</b></td><td><%= @player.country %></td></tr>
+      <tr><td><b>Team:</b></td><td><%= @player.team %></td></tr>
+      <tr><td><b>Handicap</b></td><td><%= @player.handicap %> Goals</tr</td>
+      <tr><td><b>Age:</b></td><td><%= @player.age %></td></tr>
+      <tr><td><b>Email:</b></td><td><%= @player.email %></td></tr>
+      <tr><td><b>Tel:</b></td><td><%= @player.tel %></td></tr>
+    </table>
+  </div>
+
+</div>
+<%= render 'sidebar' %>

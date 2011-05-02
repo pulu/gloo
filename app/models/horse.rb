@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110426190831
+# Schema version: 20110502010004
 #
 # Table name: horses
 #
@@ -13,16 +13,16 @@
 #  foal_country           :string(255)
 #  color                  :string(255)
 #  breed                  :string(255)
-#  stallion               :boolean
 #  vet_report_file_name   :string(255)
 #  xray_file_name         :string(255)
-#  dna_test_fname         :string(255)
+#  dna_test_file_name     :string(255)
 #  registration_file_name :string(255)
 #  photo_file_name        :string(255)
 #  photo_content_type     :string(255)
 #  photo_file_size        :integer
 #  created_at             :datetime
 #  updated_at             :datetime
+#  gender                 :string(255)
 #
 
 class Horse < ActiveRecord::Base
@@ -39,10 +39,17 @@ class Horse < ActiveRecord::Base
   has_attached_file :xray 
   has_attached_file :dna_test
   has_attached_file :registration
-  # attr_protected :photo_file_name, :photo_content_type, :photo_size
+  attr_protected :photo_file_name, :photo_content_type, :photo_size
 
   #validation
   validates :name, :presence => true,
                    :uniqueness => true
+
+  #----------------------------------------------------------------------
+  # search for horse name
+  def self.search( search )
+    search_condition = "%" + search + "%"
+    find( :all, :conditions => ['name LIKE ?', search_condition ]) 
+  end
 
 end

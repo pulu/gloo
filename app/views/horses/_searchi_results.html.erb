@@ -1,0 +1,8 @@
+<ul>
+  <% @horses.each do |horse| %>
+    <li><%= link_to horse.name, 
+      :action => 'show', :id => horse.id %>
+    </li>
+  <% end %>
+</ul>
+
