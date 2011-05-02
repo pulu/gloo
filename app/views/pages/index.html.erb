@@ -1,0 +1,18 @@
+<div class="search">
+  <h1>GLOO</h1>
+    <% form_tag pages_path, :method => 'get' do %>
+      <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :name => nil %>
+      </p>
+    <% end %>
+
+    <ul>
+      <% for horse in @horses %>
+        <li>
+          <%= link_to horse.name, horse_path( horse ) %>
+        </li>
+      <% end %>
+    </ul>
+
+</div>

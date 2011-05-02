@@ -1,5 +1,4 @@
 Pulu::Application.routes.draw do
-  get "players/new"
 
   resources :pages, :users, :horses, :players
   

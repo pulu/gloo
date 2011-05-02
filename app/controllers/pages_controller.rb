@@ -1,5 +1,10 @@
 class PagesController < ApplicationController
-  
+
+  def index 
+    @horses = Horse.all() 
+    @title = "Search"
+  end
+
   def home
     @title = "Home"
   end
