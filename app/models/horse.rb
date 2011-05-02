@@ -39,7 +39,7 @@ class Horse < ActiveRecord::Base
   has_attached_file :xray 
   has_attached_file :dna_test
   has_attached_file :registration
-  #attr_protected :photo_file_name, :photo_content_type, :photo_size
+  # attr_protected :photo_file_name, :photo_content_type, :photo_size
 
   #validation
   validates :name, :presence => true,
