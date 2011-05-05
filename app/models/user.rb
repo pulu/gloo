@@ -13,20 +13,12 @@
 class User < ActiveRecord::Base
   attr_accessible :name, :email
 
+  has_many :microposts, :dependent => :destroy
+  has_many :comments,   :dependent => :destroy
+
   validates :name,  :presence => true
   validates :email, :presence => true,
                     :uniqueness => true
 
-  #----------------------
-  def self.search(search)
- 
-    if search
-      @horses = Horse.all(:conditions =>['name LIKE ?',"%#{search}%"])
-      @players = Player.all(:conditions =>['name LIKE ?',"%#{search}%"])
-    end
-
-    @page = @horses + @players
-
-  end
 
 end

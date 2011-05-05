@@ -1,25 +1,32 @@
 # == Schema Information
-# Schema version: 20110502010004
+# Schema version: 20110503220618
 #
 # Table name: players
 #
 #  id                 :integer         not null, primary key
 #  name               :string(255)
 #  email              :string(255)
-#  nationality        :string(255)
+#  team               :string(255)
 #  handicap           :integer
 #  best_result        :string(255)
-#  current_team       :string(255)
 #  age                :integer
+#  tel                :string(255)
+#  address            :string(255)
+#  city               :string(255)
+#  country            :string(255)
 #  professional       :boolean
 #  photo_file_name    :string(255)
 #  photo_content_type :string(255)
 #  photo_file_size    :integer
+#  cv_file_name       :string(255)
 #  created_at         :datetime
 #  updated_at         :datetime
 #
 
 class Player < ActiveRecord::Base
+
+  has_many :microposts, :dependent => :destroy
+
   # Paperclip
   has_attached_file :photo,
     :styles => {
@@ -29,8 +36,7 @@ class Player < ActiveRecord::Base
      },
      :url => "/images/photos/player/:basename.:style.:extension",
      :path => ":rails_root/public/images/photos/player/:basename.:style.:extension"
-  # attr_protected :photo_file_name, :photo_content_type, :photo_size
-
+  has_attached_file :cv
 
   #-----------------------
   # validation

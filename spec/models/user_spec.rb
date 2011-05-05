@@ -26,4 +26,54 @@ describe User do
     duplicate.should_not be_valid
   end
 
+  describe "micropost" do
+    
+    before(:each) do
+      @user = User.create( @attr )
+      @mp1 = Factory(:micropost, :user => @user, :created_at => 1.day.ago)
+      @mp2 = Factory(:micropost, :user => @user, :created_at => 1.hour.ago)
+    end
+
+    it "should have a microposts attribute" do
+      @user.should respond_to( :microposts ) 
+    end
+
+    it "should have the microposts in the right order" do
+      @user.microposts.should == [@mp2, @mp1]
+    end
+
+    it "should destroy associated microposts" do
+      @user.destroy
+      [@mp1,@mp2].each do |micropost|
+        Micropost.find_by_id(micropost.id).should be_nil
+      end
+    end
+  end
+
+  describe "comment" do
+
+    before(:each) do
+      @user = User.create(@attr)
+      @c1 = Factory(:comment, :user => @user, :created_at => 1.day.ago)
+      @c2 = Factory(:comment, :user => @user, :created_at => 1.hour.ago)
+    end
+
+    it "should have a comment attribute" do
+      @user.should respond_to( :comments ) 
+    end
+
+    it "should have the comments in the right order" do
+      @user.comments.should == [@c2, @c1]
+    end
+      
+    it "should destroy associated comments" do
+      @user.destroy
+      [@c1,@c2].each do |comment|
+        Comment.find_by_id(comment.id).should be_nil
+      end
+    end
+   end
+
+
+
 end

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110502010004
+# Schema version: 20110503220618
 #
 # Table name: horses
 #
@@ -7,12 +7,16 @@
 #  name                   :string(255)
 #  breeder_id             :integer
 #  sire_id                :integer
+#  sire_bloodline         :string(255)
 #  dam_id                 :integer
+#  dam_bloodline          :string(255)
 #  owner                  :string(255)
 #  foal_year              :integer
 #  foal_country           :string(255)
 #  color                  :string(255)
 #  breed                  :string(255)
+#  gender                 :string(255)
+#  markings               :string(255)
 #  vet_report_file_name   :string(255)
 #  xray_file_name         :string(255)
 #  dna_test_file_name     :string(255)
@@ -22,10 +26,12 @@
 #  photo_file_size        :integer
 #  created_at             :datetime
 #  updated_at             :datetime
-#  gender                 :string(255)
 #
 
 class Horse < ActiveRecord::Base
+
+  has_many :comments, :dependent => :destroy
+
   # Paperclip
   has_attached_file :photo,
     :styles => {
@@ -39,7 +45,6 @@ class Horse < ActiveRecord::Base
   has_attached_file :xray 
   has_attached_file :dna_test
   has_attached_file :registration
-  # attr_protected :photo_file_name, :photo_content_type, :photo_size
 
   #validation
   validates :name, :presence => true,

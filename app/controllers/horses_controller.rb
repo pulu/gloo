@@ -8,29 +8,20 @@ class HorsesController < ApplicationController
 
   #--------------
   def new
-    @title = "Horses"
-
+    @title = "Add Horse Profile"
     @horse = Horse.new
-    respond_to do |format|
-      format.html
-      format.json {render :json => @horse }
-    end
   end
 
   #--------------
   def create 
-    @title = "Create horse info"
+    @title = "Create Horse Info"
     @horse = Horse.create(params[:horse])
 
     respond_to do |f|
       if @horse.save
-        f.html { redirect_to( @horse, 
-          :notice => 'Created horse info.')}
-        f.json { render :json => @horse, :status => :created, :location => @horse }
+        redirect_to( @horse, :notice => 'Created horse info.')
       else 
-        f.html { render :action => "new"}
-        f.json { render :json => @horse.errors,
-          :status => :unprocessable_entity}
+        render :action => "new"
       end
     end
   end
@@ -49,6 +40,7 @@ class HorsesController < ApplicationController
 
   #--------------
   def update
+    @title = "Update Horse Info"
     @horse = Horse.find(params[:id])
     if @horse.update_attributes(params[:horse])
       flash[:success] = "Profile updated."
@@ -62,6 +54,7 @@ class HorsesController < ApplicationController
 
   #--------------
   def destroy
+    @title = "Delete Horse Info"
     Horse.find( params[:id] ).destroy
     flash[:success] = "Horse Data Removed"
     redirect_to horses_path

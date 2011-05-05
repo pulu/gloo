@@ -9,14 +9,17 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :age
       t.string  :tel
       t.string  :address
+      t.string  :city
       t.string  :country
       t.boolean :professional
       t.string  :photo_file_name
       t.string  :photo_content_type
       t.integer :photo_file_size
+      t.string  :cv_file_name
 
       t.timestamps
     end
+    add_index :players, :name
   end
 
   def self.down

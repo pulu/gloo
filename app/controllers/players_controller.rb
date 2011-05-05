@@ -8,15 +8,21 @@ class PlayersController < ApplicationController
 
   #--------------
   def new
-    @title = "Players"
+    @title = "New Player"
     @player = Player.new
   end
 
   #--------------
   def create
     @title = "Create Player Profile"
-    @player = Player.create(params[:player])
-    redirect_to( @player )
+    if @player = Player.create(params[:player])
+      flash[:success] = "Profile created"
+      redirect_to( @player )
+    else
+      flash[:failure] = "Creation Failed"
+      @title = "New Player"
+      render 'new'
+    end
   end
 
   #--------------

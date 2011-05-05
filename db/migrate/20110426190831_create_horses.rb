@@ -4,13 +4,16 @@ class CreateHorses < ActiveRecord::Migration
       t.string  :name
       t.integer :breeder_id
       t.integer :sire_id
+      t.string  :sire_bloodline
       t.integer :dam_id
+      t.string  :dam_bloodline
       t.string  :owner
       t.integer :foal_year
       t.string  :foal_country
       t.string  :color
       t.string  :breed
       t.string  :gender
+      t.string  :markings
       t.string  :vet_report_file_name
       t.string  :xray_file_name
       t.string  :dna_test_file_name
@@ -21,6 +24,7 @@ class CreateHorses < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :horses, :name
   end
 
   def self.down

@@ -1,11 +1,14 @@
 <div class="span-18 colborder">
   <h2 align="center"><%= @horse.name %></h2>
   <nav align="right">
+    <%= link_to 'Vet Report', '#', :class => "quiet" %> |
+    <%= link_to 'DNA Test', '#', :class => "quiet" %> |
+    <%= link_to 'Registration', '#', :class => "quiet" %> |
     <%= link_to 'Edit', edit_horse_path(@horse), :class => "quiet" %> |
     <%= link_to 'Back', horses_path, :class => "quiet" %>
   </nav>
 
-  <div class="span-7 colborder">
+  <div class="span-5 colborder">
   <h3 align="center">Ancestry</h3>
   <% @sire = sire %>
   <h5>Sire: <%= @sire.name %></h5>
@@ -21,7 +24,7 @@
     <p><b>Owner: </b><tab><%= @dam.owner %><p>
   </div>
 
-  <div class="span-10 last">
+  <div class="span-12 last">
     <%= image_tag @horse.photo.url(:medium) %>
   
     <table>

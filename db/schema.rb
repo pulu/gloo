@@ -10,18 +10,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110502010004) do
+ActiveRecord::Schema.define(:version => 20110503220618) do
+
+  create_table "comments", :force => true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "horse_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["horse_id"], :name => "index_comments_on_horse_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "horses", :force => true do |t|
     t.string   "name"
     t.integer  "breeder_id"
     t.integer  "sire_id"
+    t.string   "sire_bloodline"
     t.integer  "dam_id"
+    t.string   "dam_bloodline"
     t.string   "owner"
     t.integer  "foal_year"
     t.string   "foal_country"
     t.string   "color"
     t.string   "breed"
+    t.string   "gender"
+    t.string   "markings"
     t.string   "vet_report_file_name"
     t.string   "xray_file_name"
     t.string   "dna_test_file_name"
@@ -31,8 +46,20 @@ ActiveRecord::Schema.define(:version => 20110502010004) do
     t.integer  "photo_file_size"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "gender"
   end
+
+  add_index "horses", ["name"], :name => "index_horses_on_name"
+
+  create_table "microposts", :force => true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "player_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "microposts", ["player_id"], :name => "index_microposts_on_player_id"
+  add_index "microposts", ["user_id"], :name => "index_microposts_on_user_id"
 
   create_table "players", :force => true do |t|
     t.string   "name"
@@ -43,14 +70,18 @@ ActiveRecord::Schema.define(:version => 20110502010004) do
     t.integer  "age"
     t.string   "tel"
     t.string   "address"
+    t.string   "city"
     t.string   "country"
     t.boolean  "professional"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
+    t.string   "cv_file_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "players", ["name"], :name => "index_players_on_name"
 
   create_table "users", :force => true do |t|
     t.string   "name"

@@ -3,7 +3,7 @@ Pulu::Application.routes.draw do
   resources :pages, :users, :horses, :players
   
   match '/horses',    :to => 'horses#new'
-  match '/signup',     :to => 'users#new'
+  match '/signup',    :to => 'users#new'
 
   match '/pages',     :to => 'pages#index'
   match '/contact',   :to => 'pages#contact' 
