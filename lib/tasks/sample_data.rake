@@ -104,7 +104,13 @@ namespace :db do
     @no_users.times do |n| 
       name = Faker::Name.first_name
       email = Faker::Internet.email
-      user = User.create!(:name => name, :email => email )
+      password = "abcdefgh"
+      password_confirmation = "abcdefgh"
+      user = User.create!(:name => name, 
+                          :email => email,
+                          :password => password,
+                          :password_confirmation => password_confirmation
+                          )
 
       @no_microposts = (1..5).to_a.shuffle.first
       @no_microposts.times do |k|

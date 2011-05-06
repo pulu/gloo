@@ -11,19 +11,22 @@ describe Player do
 
   it "should require a name" do
    no_name = @attr.merge( :name => "") 
-   no_name_horse = Horse.create( no_name ) 
-   no_name_horse.should_not be_valid
+   no_name_player = Player.create( no_name ) 
+   no_name_player.should_not be_valid
   end
 
   it "should reject too long names" do
   end
 
   it "should require an email" do
+   no_email = @attr.merge( :email => "") 
+   no_email_player = Player.create( no_email ) 
+   no_email_player.should_not be_valid
   end
 
   it "should reject duplicate emails" do
-    Horse.create!( @attr )
-    duplicate = Horse.new( @attr )
+    Player.create!( @attr )
+    duplicate = Player.new( @attr )
     duplicate.should_not be_valid
   end
 

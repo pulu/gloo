@@ -9,4 +9,9 @@ class UsersController < ApplicationController
     @title = "Sign Up"
   end
 
+  def index
+    @title = "Users"
+    @users = User.all
+  end
+
 end
