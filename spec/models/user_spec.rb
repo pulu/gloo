@@ -125,29 +125,5 @@ describe User do
     end
   end
 
-  # --------------------------------------------------------------
-  describe "comment" do
-
-    before(:each) do
-      @user = User.create(@attr)
-      @c1 = Factory(:comment, :user => @user, :created_at => 1.day.ago)
-      @c2 = Factory(:comment, :user => @user, :created_at => 1.hour.ago)
-    end
-
-    it "should have a comment attribute" do
-      @user.should respond_to( :comments )
-    end
-
-    it "should have the comments in the right order" do
-      @user.comments.should == [@c2, @c1]
-    end
-
-    it "should destroy associated comments" do
-      @user.destroy
-      [@c1,@c2].each do |comment|
-        Comment.find_by_id(comment.id).should be_nil
-      end
-    end
-  end
-
 end
+

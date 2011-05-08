@@ -20,7 +20,7 @@ describe Player do
 
   it "should require an user_id" do
    no_id = @attr.merge( :user_id => "") 
-   no_id_player = Player.create( no_email ) 
+   no_id_player = Player.create( no_id ) 
    no_id_player.should_not be_valid
   end
 

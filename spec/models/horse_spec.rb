@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Horse do
   before( :each ) do
-    @attr = {:name => "Test horse", :gender => "stallion" } 
+    @attr = {:name => "Test horse", :owner_id => 1 } 
   end
 
   it "should create a valid instance given correct attribute values" do

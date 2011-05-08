@@ -1,11 +1,12 @@
 # == Schema Information
-# Schema version: 20110503220618
+# Schema version: 20110505233207
 #
 # Table name: players
 #
 #  id                 :integer         not null, primary key
 #  name               :string(255)
 #  email              :string(255)
+#  user_id            :integer
 #  team               :string(255)
 #  handicap           :integer
 #  best_result        :string(255)

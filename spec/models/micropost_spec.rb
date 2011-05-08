@@ -7,7 +7,7 @@ describe Micropost do
     @user = Factory(:user)
     @attr = {
       :content => "Value For content",
-      :player_id => 1
+      :about_id => 1
     }
   end
 

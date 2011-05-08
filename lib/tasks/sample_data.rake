@@ -18,7 +18,7 @@ namespace :db do
                     :markings => "White socks",
                     :photo_file_name => "horse_1.jpg",
                     :photo_content_type => "image/jpg",
-                    :photo_file_size => 4661,
+                    :photo_file_size => 4661
                   )
 
     @no_breeders = 10

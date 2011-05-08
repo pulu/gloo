@@ -12,14 +12,9 @@ end
 
 Factory.define :micropost do |micropost|
   micropost.content "Foo Bar"
-  micropost.player_id 1 
+  micropost.about_id 1 
   micropost.association :user
 end
 
-Factory.define :comment do |comment|
-  comment.content "Foo Bar"
-  comment.horse_id 1 
-  comment.association :user
-end
 
 
