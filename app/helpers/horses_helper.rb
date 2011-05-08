@@ -21,7 +21,6 @@ module HorsesHelper
   # get children from parent_ids
   def children
     id = @horse.id
-    Horse.all( :conditions => ['sire_id == ? OR dam_id == ?', id, id ])
     Horse.find([1,2,3])
   end
 
