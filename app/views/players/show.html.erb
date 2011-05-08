@@ -1,14 +1,14 @@
 <div class="span-18 colborder">
 
-
   <div class="span-4 colborder">
-  <h3 align="center">Tournaments</h3>
+    <h3 align="center">Tournaments</h3>
   </div>
 
   <div class="span-13 last">
     <h2 align="center"><%= @player.name %></h2>
     <nav align="right">
-      <%= link_to 'CV', '#', :class => "quiet" %> |
+      <% cv = @player.cv.url %>
+      <%= link_to 'CV', cv, :class => "quiet" %> |
       <%= link_to 'Profile', '#', :class => "quiet" %> |
       <%= link_to 'Contact', '#', :class => "quiet" %> |
       <%= link_to 'Pictures', '#', :class => "quiet" %> |

@@ -19,9 +19,6 @@ namespace :db do
                     :photo_file_name => "horse_1.jpg",
                     :photo_content_type => "image/jpg",
                     :photo_file_size => 4661,
-                    :registration_file_name => "horse_0.pdf",
-                    :dna_test_file_name => "horse_0.pdf",
-                    :vet_report_file_name => "horse_0.pdf"
                   )
 
     @no_breeders = 10

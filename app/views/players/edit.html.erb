@@ -1,7 +1,9 @@
 <h2>Edit Player Info</h2>
 
-<%= render 'form' %>
+<nav align="right">
+  <%= link_to 'Show', @player, :class => "quiet" %> |
+  <%= link_to 'Back', players_path, :class => "quiet" %>
+</nav>
 
-<%= link_to 'Show', @player %> |
-<%= link_to 'Back', players_path %>
+<%= render 'form' %>
 

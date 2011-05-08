@@ -36,9 +36,14 @@
   <div class="span-13 last">
   <h2 align="center"><%= @horse.name %></h2>
   <nav align="right">
-    <%= link_to 'Vet Report', '#', :class => "quiet" %> |
-    <%= link_to 'DNA Test', '#', :class => "quiet" %> |
-    <%= link_to 'Registration', '#', :class => "quiet" %> |
+    <% vet_report = @horse.vet_report.url %>
+    <% dna_test   = @horse.dna_test.url %>
+    <% registration = @horse.registration.url %>
+    <% xray       = @horse.xray.url %>
+    <%= link_to 'Registration', registration, :class => "quiet" %> |
+    <%= link_to 'DNA Test', dna_test, :class => "quiet" %> |
+    <%= link_to 'Vet Report', vet_report, :class => "quiet" %> |
+    <%= link_to 'Xray', xray, :class => "quiet" %> |
     <%= link_to 'Edit', edit_horse_path(@horse), :class => "quiet" %> |
     <%= link_to 'Back', horses_path, :class => "quiet" %>
   </nav>
