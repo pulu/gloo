@@ -25,8 +25,6 @@
 
 class Player < ActiveRecord::Base
 
-  has_many :microposts, :dependent => :destroy
-
   # Paperclip
   has_attached_file :photo,
     :styles => {
@@ -42,8 +40,7 @@ class Player < ActiveRecord::Base
   # validation
   validates :name,  :presence => true,
                     :length   => { :maximum => 64 }
-  validates :email, :presence => true,
-                    :uniqueness => true
+  validates :user_id, :presence => true
   
   #----------------------------------------------------------------
   # search for player name

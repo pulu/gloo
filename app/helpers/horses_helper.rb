@@ -19,15 +19,15 @@ module HorsesHelper
   end
 
   # get children from parent_ids
-  def children
+  def children 
     id = @horse.id
-    Horse.find( :all, :conditions => ['sire_id = ? OR dam_id = ?',id,id ])
+    Horse.all( :conditions => ['sire_id = ? OR dam_id = ?',id,id ])
   end
 
   # get grandchildren
-  def grandchildren
+  def grandchildren 
     id = @horse.id
-    children = Horse.all(:conditions => ['sire_id = ? OR dam_id = ?',id,id ])
+    gen1 = children 
     grandchildren = []
     children.each do |child|
       id = child.id

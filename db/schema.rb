@@ -25,12 +25,11 @@ ActiveRecord::Schema.define(:version => 20110505233207) do
 
   create_table "horses", :force => true do |t|
     t.string   "name"
+    t.integer  "owner_id"
     t.integer  "breeder_id"
     t.integer  "sire_id"
-    t.string   "sire_bloodline"
     t.integer  "dam_id"
-    t.string   "dam_bloodline"
-    t.string   "owner"
+    t.string   "bloodline"
     t.integer  "foal_year"
     t.string   "foal_country"
     t.string   "color"
@@ -49,21 +48,23 @@ ActiveRecord::Schema.define(:version => 20110505233207) do
   end
 
   add_index "horses", ["name"], :name => "index_horses_on_name"
+  add_index "horses", ["owner_id"], :name => "index_horses_on_owner_id"
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
     t.integer  "user_id"
-    t.integer  "player_id"
+    t.integer  "about_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "microposts", ["player_id"], :name => "index_microposts_on_player_id"
+  add_index "microposts", ["about_id"], :name => "index_microposts_on_about_id"
   add_index "microposts", ["user_id"], :name => "index_microposts_on_user_id"
 
   create_table "players", :force => true do |t|
     t.string   "name"
     t.string   "email"
+    t.integer  "user_id"
     t.string   "team"
     t.integer  "handicap"
     t.string   "best_result"
@@ -82,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20110505233207) do
   end
 
   add_index "players", ["name"], :name => "index_players_on_name"
+  add_index "players", ["user_id"], :name => "index_players_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

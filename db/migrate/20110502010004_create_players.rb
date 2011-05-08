@@ -3,6 +3,7 @@ class CreatePlayers < ActiveRecord::Migration
     create_table :players do |t|
       t.string  :name
       t.string  :email
+      t.integer :user_id
       t.string  :team
       t.integer :handicap
       t.string  :best_result
@@ -20,6 +21,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.timestamps
     end
     add_index :players, :name
+    add_index :players, :user_id
   end
 
   def self.down

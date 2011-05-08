@@ -5,38 +5,44 @@ namespace :db do
   task :populate => :environment do
     Rake::Task['db:reset'].invoke
 
+    #-----------------------
     Horse.create!(  :name => "Sample Horse",
+                    :owner_id => 1,
                     :breed => "Thoroughbred",
                     :color => "Black",
                     :gender => "stallion",
                     :breeder_id => 10,
                     :sire_id => 3,
-                    :sire_bloodline => "Red Star",
                     :dam_id => 2,
-                    :dam_bloodline => "Peppy",
+                    :bloodline => "RedStar",
                     :markings => "White socks",
                     :photo_file_name => "horse_1.jpg",
                     :photo_content_type => "image/jpg",
                     :photo_file_size => 4661,
-                    :owner => "Owner One")
+                    :registration_file_name => "horse_0.pdf",
+                    :dna_test_file_name => "horse_0.pdf",
+                    :vet_report_file_name => "horse_0.pdf"
+                  )
 
     @no_breeders = 10
     @no_horses = 25
     @no_horses.times do |n|
       name = Faker::Name.name
+      owner_id = 1
       breed = %w{Argentinian Criollo Thoroughbred Arabian}.shuffle.first
       color = %w{Black Brown White Bay Grey}.shuffle.first
       photo_no = (n+2)%11
       photo_file_name = "horse_#{photo_no}.jpg"
       gender = %w{Stallion Mare Gelding}.shuffle.first 
       breeder = (1..@no_breeders).to_a.shuffle.first
-      sire = (1..@no_horses).to_a.shuffle.first
-      sire_bloodline = %w{Pepy Ranger Gasper Vamos Galapagos}.shuffle.first
-      dam =  (1..@no_horses).to_a.shuffle.first
-      dam_bloodline = %w{Ruby Angel Madame Bluedevil}.shuffle.first
       markings = %w{socks white-spots black-spots grey-patch}.shuffle.first
-      owner = Faker::Name.name
+      dam =  (1..@no_horses).to_a.shuffle.first
+      sire = (1..@no_horses).to_a.shuffle.first
+      hsire = Horse.find(sire) if sire < n
+      bloodline = hsire.bloodline if hsire
+      bloodline ||= %w{RedStar Pepe Ruby Lluvia Ricardo Escobar}.shuffle.first
       Horse.create!(:name => name,
+                    :owner_id => owner_id,
                     :breed => breed,
                     :color => color,
                     :gender => gender,
@@ -44,15 +50,15 @@ namespace :db do
                     :photo_content_type => "image/jpeg",
                     :breeder_id => breeder,
                     :sire_id => sire,
-                    :sire_bloodline => sire_bloodline,
+                    :bloodline => bloodline,
                     :dam_id => dam,
-                    :dam_bloodline => dam_bloodline,
-                    :markings => markings,
-                    :owner => owner)
+                    :markings => markings)
 
     end
      
+    #---------------------
     Player.create!( :name => "Ignacio Figuera",
+                    :user_id => 1,
                     :email => "ignaciof@gmail.com",
                     :age => "30",
                     :tel => "001 917 665 2156",
@@ -70,6 +76,7 @@ namespace :db do
     @no_players = 15
     @no_players.times do |n|
       name =  Faker::Name.name
+      user_id = 1
       email = Faker::Internet.email
       tel =   Faker::PhoneNumber.phone_number
       country = Faker::Address.country
@@ -86,6 +93,7 @@ namespace :db do
       professional = %w{true false}.shuffle.first 
       age = (18..40).to_a.shuffle.first
       Player.create!(:name => name,
+                    :user_id => user_id,
                     :email => email,
                     :country => country,
                     :team => team,
@@ -101,6 +109,7 @@ namespace :db do
                     )
     end 
 
+    #------------------
     @no_users = 10
     @no_users.times do |n| 
       name = Faker::Name.first_name
@@ -112,24 +121,14 @@ namespace :db do
                           :password => password,
                           :password_confirmation => password_confirmation
                           )
-
       @no_microposts = (1..5).to_a.shuffle.first
       @no_microposts.times do |k|
-        player_id = (1..@no_players).to_a.shuffle.first
+        about_id = (1..@no_users).to_a.shuffle.first 
         content = Faker::Lorem.sentence
         content = content.slice(0,140)
-        user.microposts.create( :content => content, :player_id => player_id)
-      end
-
-      @no_comments = (1..3).to_a.shuffle.first
-      @no_comments.times do |k|
-        horse_id = (1..@no_horses).to_a.shuffle.first
-        content = Faker::Lorem.sentence
-        content = content.slice(0,140)
-        user.comments.create( :content => content, :horse_id => horse_id)
+        user.microposts.create( :content => content, :about_id => about_id )
       end
     end
-
 
   end
 end

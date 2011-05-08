@@ -1,18 +1,18 @@
 <div class="span-18 colborder">
 
-  <div class="span-5 colborder">
+  <div class="span-4 colborder">
   <h4 align="center">Breeding</h4>
   <% @sire = sire %>
     <% sire_image = image_tag @sire.photo.url(:small) %>
     <%= link_to sire_image, @sire %>
     <p><b>Sire:</b><%= @sire.name %><br />
-    <b>Bloodline: </b><tab><%= @horse.sire_bloodline %></p>
+    <b>Bloodline: </b><tab><%= sire.bloodline %></p>
 
   <% @dam = dam %>
     <% dam_image = image_tag @dam.photo.url(:small) %>
     <%= link_to dam_image, @dam %>
-    <p>Dam: <%= @dam.name %> <br />
-    <b>Bloodline: </b><tab><%= @horse.dam_bloodline %><p>
+    <p><b>Dam: </b><%= @dam.name %> <br />
+    <b>Bloodline: </b><tab><%= dam.bloodline %><p>
 
   <hr>
   <h5 align="center">Children</h5>
@@ -33,7 +33,7 @@
 
 
 
-  <div class="span-12 last">
+  <div class="span-13 last">
   <h2 align="center"><%= @horse.name %></h2>
   <nav align="right">
     <%= link_to 'Vet Report', '#', :class => "quiet" %> |
@@ -49,7 +49,7 @@
       <tr><td><b>Breed:</b></td><td><%= @horse.breed %></td></tr>
       <tr><td><b>Color:</b></td><td><%= @horse.color %></td></tr>
       <tr><td><b>Gender:</b></td><td><%= @horse.gender %></td></tr>
-      <tr><td><b>Owner:</b></td><td><%= @horse.owner %></tr</td>
+      <tr><td><b>Owner:</b></td><td><%= @horse.owner_id %></tr</td>
       <tr><td><b>Breeder:</b></td><td><%= @horse.breeder_id %></td></tr>
     </table>
   </div>

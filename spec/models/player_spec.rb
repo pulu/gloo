@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Player do
   before( :each ) do
-    @attr = {:name => "Test player", :email => "test@email.com" } 
+    @attr = {:name => "Test player", :email => "test@email.com", :user_id => 1} 
   end
 
   it "should create a valid instance given correct attribute values" do
@@ -18,16 +18,13 @@ describe Player do
   it "should reject too long names" do
   end
 
-  it "should require an email" do
-   no_email = @attr.merge( :email => "") 
-   no_email_player = Player.create( no_email ) 
-   no_email_player.should_not be_valid
+  it "should require an user_id" do
+   no_id = @attr.merge( :user_id => "") 
+   no_id_player = Player.create( no_email ) 
+   no_id_player.should_not be_valid
   end
 
-  it "should reject duplicate emails" do
-    Player.create!( @attr )
-    duplicate = Player.new( @attr )
-    duplicate.should_not be_valid
+  it "should reject duplicate ids" do
   end
 
 end

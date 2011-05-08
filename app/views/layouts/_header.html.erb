@@ -2,10 +2,10 @@
   <div class="container">
     <div id="header">
       <h1 id="logo" class="span-16">
-        <% logo = image_tag("logo.jpg", :alt => "GLOO") %>
+        <% logo = image_tag("logo.jpg", :alt => "liquidHorse") %>
         <%= link_to logo, root_path %>
       </h1>
-      <nav>
+      <nav class="large">
         <ul>
           <li><%= link_to "horses",   horses_path,  :class => "quiet" %></li>
           <li><%= link_to "players",  players_path, :class => "quiet" %></li>

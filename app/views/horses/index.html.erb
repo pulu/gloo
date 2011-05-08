@@ -12,12 +12,12 @@
   </tr>
 
   <% @horses.each do |horse| %>
+    <% image = image_tag horse.photo.url(:thumb) %>
     <tr>
       <td><%= horse.name %></td>
       <td><%= horse.breed %></td>
       <td><%= horse.color %></td>
-      <td><%= image_tag horse.photo.url(:thumb) %></td>
-      <td><%= link_to 'Show', horse %></td>
+      <td><%= link_to image, horse %></td>
       <td><%= link_to 'Edit', edit_horse_path(horse) %></td>
       <td><%= link_to 'Destroy', horse, :method => :delete,
                                         :confirm => 'Are you sure?', 
