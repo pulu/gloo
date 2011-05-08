@@ -3,15 +3,13 @@ module HorsesHelper
   # return the sire of the horse
   def sire
     sid = @horse.sire_id
-    sid = (1..10).to_a.shuffle.first unless sid
-    @sire = Horse.find(sid)
+    @sire = Horse.find(sid) if sid
   end
 
   # return the dam of the horse
   def dam
     did = @horse.dam_id
-    did = (1..10).to_a.shuffle.first unless did
-    @dam = Horse.find( did )
+    @dam = Horse.find( did ) if did
   end
   
   # search for horse name
@@ -23,7 +21,8 @@ module HorsesHelper
   # get children from parent_ids
   def children
     id = @horse.id
-    Horse.all (:conditions => ['sire_id == ? OR dam_id == ?', id, id ])
+    Horse.all( :conditions => ['sire_id == ? OR dam_id == ?', id, id ])
+    Horse.find([1,2,3])
   end
 
   # get grandchildren
