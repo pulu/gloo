@@ -16,7 +16,7 @@
 
   <hr>
   <h5 align="center">Children</h5>
-  <% @children = children %>
+  <% @children = [] %>
   <% @children.each do |child| %>
     <%= link_to child.name, child %><br \>
   <% end %>
@@ -24,7 +24,7 @@
 
   <hr>
   <h5 align="center">GrandChildren</h5>
-  <% @grandchildren = grandchildren %>
+  <% @grandchildren = [] %>
   <% @grandchildren.each do |grandchild| %>
     <%= link_to grandchild.name, grandchild %><br \>
   <% end %>
