@@ -24,7 +24,7 @@
 
   <hr>
   <h5 align="center">GrandChildren</h5>
-  <% @grandchildren = [] %>
+  <% @grandchildren = grandchildren %>
   <% @grandchildren.each do |grandchild| %>
     <%= link_to grandchild.name, grandchild %><br \>
   <% end %>

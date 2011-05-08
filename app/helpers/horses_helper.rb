@@ -21,19 +21,18 @@ module HorsesHelper
   # get children from parent_ids
   def children
     id = @horse.id
-    Horse.find( :all, :conditions => ['sire_id == ? OR dam_id == ?',id,id ])
-    Horse.find([1,2,3])
+    Horse.find( :all, :conditions => ['sire_id = ? OR dam_id = ?',id,id ])
   end
 
   # get grandchildren
   def grandchildren
     id = @horse.id
-    children = Horse.all(:conditions => ['sire_id == ? OR dam_id == ?',id,id ])
+    children = Horse.all(:conditions => ['sire_id = ? OR dam_id = ?',id,id ])
     grandchildren = []
     children.each do |child|
       id = child.id
       grandchildren += Horse.all(:conditions => 
-        ['sire_id == ? OR dam_id == ?',id,id ])
+        ['sire_id = ? OR dam_id = ?', id, id ])
     end
     grandchildren.uniq
   end
