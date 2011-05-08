@@ -20,6 +20,7 @@ namespace :db do
                     :photo_file_size => 4661,
                     :owner => "Owner One")
 
+    @no_breeders = 10
     @no_horses = 25
     @no_horses.times do |n|
       name = Faker::Name.name
@@ -28,10 +29,10 @@ namespace :db do
       photo_no = (n+2)%11
       photo_file_name = "horse_#{photo_no}.jpg"
       gender = %w{Stallion Mare Gelding}.shuffle.first 
-      breeder = (1..10).to_a.shuffle.first
-      sire = (1..30).to_a.shuffle.first
+      breeder = (1..@no_breeders).to_a.shuffle.first
+      sire = (1..@no_horses).to_a.shuffle.first
       sire_bloodline = %w{Pepy Ranger Gasper Vamos Galapagos}.shuffle.first
-      dam =  (1..30).to_a.shuffle.first
+      dam =  (1..@no_horses).to_a.shuffle.first
       dam_bloodline = %w{Ruby Angel Madame Bluedevil}.shuffle.first
       markings = %w{socks white-spots black-spots grey-patch}.shuffle.first
       owner = Faker::Name.name

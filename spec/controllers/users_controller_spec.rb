@@ -30,6 +30,7 @@ describe UsersController do
     end
   end
 
+  # ---------------------
   describe "GET 'new'" do
     it "should be successful" do
       get 'new'
@@ -41,5 +42,50 @@ describe UsersController do
     end
   end
 
+  # ---------------------------
+  describe "POST 'create'" do
+    
+    describe "Failure" do
+      before(:each) do
+        @attr = { :name => "", :email => "", :password => "",
+                  :password_confirmation => "" }
+      end
+
+      it "should not create a user" do
+        lambda do
+          post :create, :user => @attr
+        end.should_not change( User, :count)
+      end
+      it "should have the right title" do
+        post :create, :user => @attr
+        response.should have_selector( "title", :content => "Sign Up")
+      end
+      it "should renedr the 'new' page" do
+        post :create, :user => @attr
+        response.should render_template('new')
+      end
+    end
+    
+    describe "Success" do
+      before(:each) do
+        @attr = { :name => "Test User", :email => "test@gmail.com", 
+                  :password => "foobar", :password_confirmation => "foobar" }
+      end
+
+      it "should create a user" do
+        lambda do
+          post :create, :user => @attr
+        end.should change( User, :count).by(1)
+      end
+      it "should redirect to the right title page" do
+        post :create, :user => @attr
+        response.should redirect_to(user_path(assigns(:user)))
+      end
+      it "should have a welcome message" do
+        post :create, :user => @attr
+        flash[:success].should =~ /Welcome/i  
+      end
+    end 
+  end
 end
 

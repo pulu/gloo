@@ -1,4 +1,39 @@
 <div class="span-18 colborder">
+
+  <div class="span-5 colborder">
+  <h4 align="center">Breeding</h4>
+  <% @sire = sire %>
+    <% sire_image = image_tag @sire.photo.url(:small) %>
+    <%= link_to sire_image, @sire %>
+    <p><b>Sire:</b><%= @sire.name %><br />
+    <b>Bloodline: </b><tab><%= @horse.sire_bloodline %></p>
+
+  <% @dam = dam %>
+    <% dam_image = image_tag @dam.photo.url(:small) %>
+    <%= link_to dam_image, @dam %>
+    <p>Dam: <%= @dam.name %> <br />
+    <b>Bloodline: </b><tab><%= @horse.dam_bloodline %><p>
+
+  <hr>
+  <h5 align="center">Children</h5>
+  <% @children = children %>
+  <% @children.each do |child| %>
+    <%= link_to child.name, child %><br \>
+  <% end %>
+  <p></p>
+
+  <hr>
+  <h5 align="center">GrandChildren</h5>
+  <% @grandchildren = grandchildren %>
+  <% @grandchildren.each do |grandchild| %>
+    <%= link_to grandchild.name, grandchild %><br \>
+  <% end %>
+
+  </div>
+
+
+
+  <div class="span-12 last">
   <h2 align="center"><%= @horse.name %></h2>
   <nav align="right">
     <%= link_to 'Vet Report', '#', :class => "quiet" %> |
@@ -7,24 +42,6 @@
     <%= link_to 'Edit', edit_horse_path(@horse), :class => "quiet" %> |
     <%= link_to 'Back', horses_path, :class => "quiet" %>
   </nav>
-
-  <div class="span-5 colborder">
-  <h3 align="center">Ancestry</h3>
-  <% @sire = sire %>
-  <h5>Sire: <%= @sire.name %></h5>
-    <% sire_image = image_tag @sire.photo.url(:small) %>
-    <%= link_to sire_image, @sire %>
-    <p><b>Owner: </b><tab><%= @sire.owner %></p>
-    <hr>
-
-  <% @dam = dam %>
-  <h5>Dam: <%= @dam.name %> </h5>
-    <% dam_image = image_tag @dam.photo.url(:small) %>
-    <%= link_to dam_image, @dam %>
-    <p><b>Owner: </b><tab><%= @dam.owner %><p>
-  </div>
-
-  <div class="span-12 last">
     <%= image_tag @horse.photo.url(:medium) %>
   
     <table>
