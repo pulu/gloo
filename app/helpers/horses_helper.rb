@@ -23,7 +23,7 @@ module HorsesHelper
   # get children from parent_ids
   def children
     id = @horse.id
-    Horse.find( :all, :conditions => ['sire_id == ? OR dam_id == ?', id, id ])
+    Horse.all (:conditions => ['sire_id == ? OR dam_id == ?', id, id ])
   end
 
   # get grandchildren
