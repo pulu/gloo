@@ -1,5 +1,5 @@
 module ApplicationHelper
-  
+
   # return a title based on the page
   def title
     base_title = "liquidHorse"
@@ -8,6 +8,11 @@ module ApplicationHelper
     else
       "#{base_title} | #{@title}"
     end
+  end
+
+  # make logo
+  def logo
+    image_tag("logo.jpg", :alt => "liquidHorse")
   end
 
 end

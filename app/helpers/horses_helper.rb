@@ -1,5 +1,8 @@
 module HorsesHelper
-  
+  def foobar
+    "Test"
+  end
+
   # return the sire of the horse
   def sire
     sid = @horse.sire_id

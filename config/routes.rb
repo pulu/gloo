@@ -1,9 +1,14 @@
 Pulu::Application.routes.draw do
 
+  get "sessions/new"
+
   resources :pages, :users, :horses, :players
-  
-  match '/horses',    :to => 'horses#new'
+  resources :sessions, :only => [:new, :create, :destroy]
+ 
+  match '/signin',    :to => 'sessions#new'
+  match '/signout',   :to => 'sessions#destroy'
   match '/signup',    :to => 'users#new'
+  match '/horses',    :to => 'horses#new'
 
   match '/pages',     :to => 'pages#index'
   match '/contact',   :to => 'pages#contact' 
