@@ -1,4 +1,7 @@
 class HorsesController < ApplicationController
+  before_filter :authenticate, :only => [:edit, :update, :destroy]
+  before_filter :correct_user, :only => [:edit, :update]
+  before_filter :admin_user,   :only => :destroy
 
   #--------------
   def show 
@@ -35,13 +38,11 @@ class HorsesController < ApplicationController
   #--------------
   def edit
     @title = "Edit Horse Info"
-    @horse = Horse.find(params[:id])
   end
 
   #--------------
   def update
     @title = "Update Horse Info"
-    @horse = Horse.find(params[:id])
     if @horse.update_attributes(params[:horse])
       flash[:success] = "Profile updated."
       redirect_to @horse 
@@ -63,6 +64,22 @@ class HorsesController < ApplicationController
   #-------------------------------------------------------------------
   def search
     @horses = Horse.search parama[:searcs]
+  end
+
+  # -----------------------------
+  private
+
+  def authenticate 
+    deny_access unless signed_in?
+  end
+
+  def correct_user 
+    @horse = Horse.find(params[:id])
+    redirect_to root_path unless current_user_id?(@horse.owner_id) 
+  end
+
+  def admin_user
+    redirect_to(horses_path) unless current_user.admin?
   end
 
 end

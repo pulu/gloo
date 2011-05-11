@@ -12,14 +12,15 @@
       <div class="span-21 last">
       <nav align="right" class="large">
         <ul>
-        <% name = current_user ? current_user.name : "Noone" %>
           <% if signed_in?  %>
-          <li><%= current_user.name %></li>
-          <li><%= link_to "SignOut",  signout_path, :class => "quiet" %></li>
+            <li><%= current_user.name %></li>
+            <li><%= link_to "SignOut",  signout_path, :class => "quiet" %></li>
+            <li><%= link_to "Profile",  current_user, :class => "quiet" %></li>
+            <li><%= link_to "Settings", edit_user_path(current_user),
+                                                    :class => "quiet" %></li>
           <% else %>
-          <li><%= link_to "SignIn",   signin_path,  :class => "quiet" %></li>
+            <li><%= link_to "SignIn",   signin_path,  :class => "quiet" %></li>
           <% end %>
-          <li><%= link_to "Profile",  current_user, :class => "quiet" %></li>
           <li><%= link_to "Home",     root_path,    :class => "quiet" %></li>
         </ul>
       </nav>

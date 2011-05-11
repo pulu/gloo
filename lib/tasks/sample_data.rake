@@ -25,7 +25,7 @@ namespace :db do
     @no_horses = 25
     @no_horses.times do |n|
       name = Faker::Name.name
-      owner_id = 1
+      owner_id = (2..5).to_a.shuffle.first 
       breed = %w{Argentinian Criollo Thoroughbred Arabian}.shuffle.first
       color = %w{Black Brown White Bay Grey}.shuffle.first
       photo_no = (n+2)%11
@@ -73,7 +73,7 @@ namespace :db do
     @no_players = 15
     @no_players.times do |n|
       name =  Faker::Name.name
-      user_id = 1
+      user_id = (2..5).to_a.shuffle.first 
       email = Faker::Internet.email
       tel =   Faker::PhoneNumber.phone_number
       country = Faker::Address.country
@@ -108,11 +108,22 @@ namespace :db do
 
     #------------------
     @no_users = 10
+    admin = User.create!( :name     => "Privileged user",
+                          :email    => "su@gmail.com",
+                          :password => "foobar",
+                          :password_confirmation   => "foobar")
+    admin.toggle!(:access)
+    
+    User.create!(         :name     => "Raj",
+                          :email    => "rajkumar.projects.db@gmail.com",
+                          :password => "foobar",
+                          :password_confirmation   => "foobar")
+
     @no_users.times do |n| 
       name = Faker::Name.first_name
       email = Faker::Internet.email
-      password = "abcdefgh"
-      password_confirmation = "abcdefgh"
+      password = "foobar"
+      password_confirmation = "foobar"
       user = User.create!(:name => name, 
                           :email => email,
                           :password => password,

@@ -1,17 +1,5 @@
-<h1>Users</h1>
+<h1>All Users</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Image</th>
-  </tr>
-
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= user.name %></td>
-      <td><%= user.email %></td>
-      <td><%= gravatar_image_tag user.email, :size => 32 %></td>
-    </tr>
-  <% end %>
+<ul class="users">
+  <%= render @users %>
 </table>

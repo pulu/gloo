@@ -1,9 +1,11 @@
 class SessionsController < ApplicationController
 
+  #---------
   def new
     @title = "Sign In"
   end
 
+  #---------
   def create
     user = User.authenticate( params[:session][:email], 
                               params[:session][:password])
@@ -17,6 +19,7 @@ class SessionsController < ApplicationController
     end
   end
 
+  #---------
   def destroy
     sign_out
     redirect_to root_path

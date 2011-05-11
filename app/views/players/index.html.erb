@@ -5,11 +5,8 @@
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Nationality</th>
-    <th>Team</th>
-    <th>Handicap</th>
-    <th>Image</th>
+    <th>Name</th><th>Nationality</th><th>Team</th><th>Handicap</th><th>Image</th>
+    <th></th>
   </tr>
 
   <% @players.each do |player| %>
@@ -20,10 +17,17 @@
       <td><%= player.team %></td>
       <td><%= player.handicap %></td>
       <td><%= link_to image, player %></td>
-      <td><%= link_to 'Edit', edit_player_path(player) %></td>
-      <td><%= link_to 'Delete', player, :method => :delete,
+      <% if signed_in? %>
+        <% if current_user_id?(player.user_id) %>
+          <td><%= link_to 'Edit', edit_player_path(player) %></td>
+        <% elsif current_user.admin? %>
+          <td><%= link_to 'Delete', player, :method => :delete,
                                         :confirm => 'Are you sure?', 
                                         :title => "Delete #{player.name}" %></td>
+        <% else %>
+          <td></td>
+        <% end %>
+      <% end %> 
     </tr>
   <% end %>
 </table>

@@ -7,6 +7,7 @@
 #  name               :string(255)
 #  email              :string(255)
 #  encrypted_password :string(255)
+#  access             :integer         default(0)
 #  salt               :string(255)
 #  created_at         :datetime
 #  updated_at         :datetime
@@ -50,6 +51,14 @@ class User < ActiveRecord::Base
     user = find_by_id(id)
     (user && user.salt == cookie_salt) ? user : nil
   end
+
+  def admin?
+    access > 0 
+  end
+
+  #def toggle
+  #  access = access > 0 ? 0 : access 
+  #end
 
   private
 

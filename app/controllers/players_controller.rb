@@ -1,4 +1,7 @@
 class PlayersController < ApplicationController
+  before_filter :authenticate, :only => [:edit, :update, :destroy]
+  before_filter :correct_user, :only => [:edit, :update]
+  before_filter :admin_user, :only => :destroy
 
   #--------------
   def show
@@ -34,12 +37,10 @@ class PlayersController < ApplicationController
   #--------------
   def edit
     @title = "Edit Player Info"
-    @player = Player.find(params[:id])
   end
 
   #--------------
   def update
-    @player = Player.find(params[:id])
     if @player.update_attributes(params[:player])
       flash[:success] = "Profile updated."
       redirect_to @player
@@ -60,6 +61,22 @@ class PlayersController < ApplicationController
   #-------------------------------------------------------------------
   def search
     @players = Player.search parama[:search]
+  end
+
+  # --------------
+  private
+
+  def authenticate
+    deny_access unless signed_in?
+  end
+
+  def correct_user 
+    @player = Player.find(params[:id])
+    redirect_to root_path unless current_user_id?(@player.user_id) 
+  end
+
+  def admin_user
+    redirect_to( players_path ) unless current_user.admin?
   end
 
 end
