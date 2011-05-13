@@ -1,11 +1,11 @@
 # == Schema Information
-# Schema version: 20110505233207
+# Schema version: 20110512183728
 #
 # Table name: horses
 #
 #  id                     :integer         not null, primary key
 #  name                   :string(255)
-#  owner_id               :integer
+#  user_id                :integer
 #  breeder_id             :integer
 #  sire_id                :integer
 #  dam_id                 :integer
@@ -28,7 +28,14 @@
 #
 
 class Horse < ActiveRecord::Base
-  
+  belongs_to :user  
+  has_many :microposts, :as => :postable 
+  has_many :images,     :as => :imageable 
+
+  validates :name,      :presence => true,
+                        :uniqueness => true
+  validates :user_id,  :presence => true
+
   # Paperclip
   has_attached_file :photo,
     :styles => {
@@ -42,11 +49,6 @@ class Horse < ActiveRecord::Base
   has_attached_file :xray 
   has_attached_file :dna_test
   has_attached_file :registration
-
-  #validation
-  validates :name,      :presence => true,
-                        :uniqueness => true
-  validates :owner_id,  :presence => true
 
 end
 

@@ -2,7 +2,7 @@
   <h1>liquidHorse</h1>
     <%= form_tag pages_path, :method => 'get' do %>
       <p>
-        <%= text_field_tag :search, params[:search] %>
+        <%= text_field_tag :search, params[:search], :class => 'title' %>
         <%= submit_tag "Search", :name => nil %>
       </p>
     <% end %>

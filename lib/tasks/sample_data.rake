@@ -7,7 +7,7 @@ namespace :db do
 
     #-----------------------
     Horse.create!(  :name => "Sample Horse",
-                    :owner_id => 1,
+                    :user_id => 1,
                     :breed => "Thoroughbred",
                     :color => "Black",
                     :gender => "stallion",
@@ -25,7 +25,7 @@ namespace :db do
     @no_horses = 25
     @no_horses.times do |n|
       name = Faker::Name.name
-      owner_id = (2..5).to_a.shuffle.first 
+      user_id = (2..5).to_a.shuffle.first 
       breed = %w{Argentinian Criollo Thoroughbred Arabian}.shuffle.first
       color = %w{Black Brown White Bay Grey}.shuffle.first
       photo_no = (n+2)%11
@@ -39,7 +39,7 @@ namespace :db do
       bloodline = hsire.bloodline if hsire
       bloodline ||= %w{RedStar Pepe Ruby Lluvia Ricardo Escobar}.shuffle.first
       Horse.create!(:name => name,
-                    :owner_id => owner_id,
+                    :user_id => user_id,
                     :breed => breed,
                     :color => color,
                     :gender => gender,
@@ -131,10 +131,14 @@ namespace :db do
                           )
       @no_microposts = (1..5).to_a.shuffle.first
       @no_microposts.times do |k|
-        about_id = (1..@no_users).to_a.shuffle.first 
-        content = Faker::Lorem.sentence
+        about_id = (0..@no_users).to_a.shuffle.first 
+        content = Faker::Lorem.sentence(2)
         content = content.slice(0,140)
-        user.microposts.create( :content => content, :about_id => about_id )
+        category = 0
+        user.microposts.create!(  :content => content, 
+                                  :about_id => about_id,
+                                  :category => category 
+                                  )
       end
     end
 

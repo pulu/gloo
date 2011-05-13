@@ -1,0 +1,6 @@
+<div>
+    <h5 align="center">Post New Message</h5>
+    <%= render 'shared/micropost_form' %>
+    <h5 align="center"><%= pluralize(@feed_items.count, "Post") %></h5>
+    <%= render 'shared/feed' %>
+</div>

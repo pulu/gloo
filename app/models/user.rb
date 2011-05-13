@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
 
   has_many :microposts, :dependent => :destroy
+  has_many :horses
+  has_many :players
 
   #-------------
   # Validations
@@ -56,10 +58,10 @@ class User < ActiveRecord::Base
     access > 0 
   end
 
-  #def toggle
-  #  access = access > 0 ? 0 : access 
-  #end
-
+  def feed
+    Micropost.where("user_id = ?", id )
+  end
+  
   private
 
     def encrypt_password

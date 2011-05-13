@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110505233207
+# Schema version: 20110512183728
 #
 # Table name: players
 #
@@ -25,6 +25,13 @@
 #
 
 class Player < ActiveRecord::Base
+  belongs_to  :user
+  has_many    :microposts,  :as => :postable
+  has_many    :images,      :as => :imageable
+
+  validates :name,  :presence => true,
+                    :length   => { :maximum => 64 }
+  validates :user_id, :presence => true
 
   # Paperclip
   has_attached_file :photo,
@@ -37,11 +44,6 @@ class Player < ActiveRecord::Base
      :path => ":rails_root/public/images/photos/player/:basename.:style.:extension"
   has_attached_file :cv
 
-  #-----------------------
-  # validation
-  validates :name,  :presence => true,
-                    :length   => { :maximum => 64 }
-  validates :user_id, :presence => true
   
   #----------------------------------------------------------------
   # search for player name

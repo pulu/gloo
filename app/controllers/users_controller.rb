@@ -18,6 +18,11 @@ class UsersController < ApplicationController
   # -----------
   def show
     @user = User.find(params[:id])
+    if signed_in?
+      @micropost = @user.microposts.new
+      @feed_items = @user.feed.paginate( 
+              :page => params[:page], :per_page => 10)
+    end
     @title = @user.name
   end
   
@@ -60,9 +65,6 @@ class UsersController < ApplicationController
   #--------------------------------------------------
   private
 
-  def authenticate
-    deny_access unless signed_in?
-  end
 
   def correct_user
     @user = User.find(params[:id])

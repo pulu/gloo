@@ -1,0 +1,15 @@
+<% if signed_in ? %>
+  <table>
+    <tr>
+      <td><h1>Post</h1>
+        <%= render 'shared/micropost_form' %>
+      </td>
+      <td>
+        <%= render 'shared/user_info' %>
+      </td>
+    <tr>
+  </table>
+<% else %>
+  <%= link_to "Sign In", signin_path %> 
+<% end %>
+

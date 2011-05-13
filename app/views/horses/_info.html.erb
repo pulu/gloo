@@ -1,0 +1,25 @@
+<div>
+  <h2 align="center"><%= @horse.name %></h2>
+  <nav align="right">
+    <% vet_report = @horse.vet_report.url %>
+    <% dna_test   = @horse.dna_test.url %>
+    <% registration = @horse.registration.url %>
+    <% xray       = @horse.xray.url %>
+    <%= link_to 'Registration', registration, :class => "quiet" %> |
+    <%= link_to 'DNA Test', dna_test, :class => "quiet" %> |
+    <%= link_to 'Vet Report', vet_report, :class => "quiet" %> |
+    <%= link_to 'Xray', xray, :class => "quiet" %> |
+    <%= link_to 'Edit', edit_horse_path(@horse), :class => "quiet" %> |
+    <%= link_to 'Back', horses_path, :class => "quiet" %>
+  </nav>
+  <%= image_tag @horse.photo.url(:medium) %>
+  
+  <table>
+    <tr><td><b>Name:</b></td><td><%= @horse.name %></td></tr>
+    <tr><td><b>Breed:</b></td><td><%= @horse.breed %></td></tr>
+    <tr><td><b>Color:</b></td><td><%= @horse.color %></td></tr>
+    <tr><td><b>Gender:</b></td><td><%= @horse.gender %></td></tr>
+    <tr><td><b>Breeder:</b></td><td><%= @horse.breeder_id %></td></tr>
+    <tr><td><b>Lister:</b></td><td><%= @horse.user_id %></tr</td>
+  </table>
+</div>

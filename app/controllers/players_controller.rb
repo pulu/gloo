@@ -1,11 +1,14 @@
 class PlayersController < ApplicationController
-  before_filter :authenticate, :only => [:edit, :update, :destroy]
+  before_filter :authenticate, :only => [:new, :create, :edit, :update, :destroy]
   before_filter :correct_user, :only => [:edit, :update]
   before_filter :admin_user, :only => :destroy
 
   #--------------
   def show
     @player = Player.find(params[:id])
+    @feed_items = @player.microposts.paginate(  :page => params[:page],
+                                                :per_page => 10 )
+    @micropost = @player.microposts.new
     @title = @player.name
   end
 
@@ -65,10 +68,6 @@ class PlayersController < ApplicationController
 
   # --------------
   private
-
-  def authenticate
-    deny_access unless signed_in?
-  end
 
   def correct_user 
     @player = Player.find(params[:id])

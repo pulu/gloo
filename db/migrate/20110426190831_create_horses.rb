@@ -2,7 +2,7 @@ class CreateHorses < ActiveRecord::Migration
   def self.up
     create_table :horses do |t|
       t.string  :name
-      t.integer :owner_id
+      t.integer :user_id
       t.integer :breeder_id
       t.integer :sire_id
       t.integer :dam_id
@@ -24,7 +24,7 @@ class CreateHorses < ActiveRecord::Migration
       t.timestamps
     end
     add_index :horses, :name
-    add_index :horses, :owner_id
+    add_index :horses, :user_id
   end
 
   def self.down

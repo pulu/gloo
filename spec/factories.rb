@@ -12,7 +12,7 @@ end
 
 Factory.define :horse do |horse|
   horse.name          "Test horse"
-  horse.owner_id      1 
+  horse.user_id       1 
   horse.sire_id       2 
   horse.dam_id        3 
   horse.bloodline     "Cigar"
@@ -44,6 +44,7 @@ end
 Factory.define :micropost do |micropost|
   micropost.content     "Foo Bar"
   micropost.about_id    1 
+  micropost.category    0 
   micropost.association :user
 end
 

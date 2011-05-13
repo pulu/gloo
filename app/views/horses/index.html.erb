@@ -16,7 +16,7 @@
       <td><%= horse.color %></td>
       <td><%= link_to image, horse %></td>
       <% if signed_in? %>
-        <% if current_user_id?(horse.owner_id) %>
+        <% if current_user_id?(horse.user_id) %>
           <td><%= link_to 'Edit', edit_horse_path(horse) %></td>
         <% elsif current_user.admin? %>
          <td><%= link_to 'Destroy', horse, :method => :delete,

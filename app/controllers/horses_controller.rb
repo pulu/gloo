@@ -1,11 +1,14 @@
 class HorsesController < ApplicationController
-  before_filter :authenticate, :only => [:edit, :update, :destroy]
+  before_filter :authenticate, :only => [:new, :create, :edit, :update, :destroy]
   before_filter :correct_user, :only => [:edit, :update]
   before_filter :admin_user,   :only => :destroy
 
   #--------------
   def show 
     @horse = Horse.find(params[:id]) 
+    @feed_items = @horse.microposts.paginate( :page => params[:page], 
+                                              :per_page => 10 )
+    @micropost = @horse.microposts.new 
     @title = @horse.name
   end
 
@@ -68,10 +71,6 @@ class HorsesController < ApplicationController
 
   # -----------------------------
   private
-
-  def authenticate 
-    deny_access unless signed_in?
-  end
 
   def correct_user 
     @horse = Horse.find(params[:id])

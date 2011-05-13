@@ -10,11 +10,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110505233207) do
+ActiveRecord::Schema.define(:version => 20110512183728) do
 
   create_table "horses", :force => true do |t|
     t.string   "name"
-    t.integer  "owner_id"
+    t.integer  "user_id"
     t.integer  "breeder_id"
     t.integer  "sire_id"
     t.integer  "dam_id"
@@ -37,17 +37,26 @@ ActiveRecord::Schema.define(:version => 20110505233207) do
   end
 
   add_index "horses", ["name"], :name => "index_horses_on_name"
-  add_index "horses", ["owner_id"], :name => "index_horses_on_owner_id"
+  add_index "horses", ["user_id"], :name => "index_horses_on_user_id"
 
-  create_table "microposts", :force => true do |t|
-    t.string   "content"
-    t.integer  "user_id"
-    t.integer  "about_id"
+  create_table "images", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "microposts", ["about_id"], :name => "index_microposts_on_about_id"
+  create_table "microposts", :force => true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "postable_id"
+    t.string   "postable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   add_index "microposts", ["user_id"], :name => "index_microposts_on_user_id"
 
   create_table "players", :force => true do |t|

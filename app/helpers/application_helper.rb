@@ -10,6 +10,10 @@ module ApplicationHelper
     end
   end
 
+  # which controller, and what action
+  def category
+  end
+
   # make logo
   def logo
     image_tag("logo.jpg", :alt => "liquidHorse")

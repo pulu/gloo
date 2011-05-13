@@ -1,0 +1,11 @@
+<%= form_for @micropost do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <div>
+    <%= f.text_area     :content,         :class => "blog" %>
+    <%= f.hidden_field  :postable_type,   :value => @micropost.postable_type %>
+    <%= f.hidden_field  :postable_id,     :value => @micropost.postable_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>
