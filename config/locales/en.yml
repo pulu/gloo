@@ -37,6 +37,7 @@ en:
   delete:     "Delete"
   back:       "Back"
   sure:       "Are You Sure?"
+  help:       "help"
 
   error:      
     msg:      "Error"
@@ -51,7 +52,14 @@ en:
     about:    "about"
     contact:  "contact"
     help:     "help"
-  
+ 
+  pages:
+    about:    "About Us"
+    aboutus:  "We are experimenting with online communities. More details at "
+    contact:  "Contact Us"
+    contactus:  "If you'd like more information about us, contact "
+    internationalization: "For language support, please edit your settings."
+
   sessions:
     newuser:    "New User"
     signupnow:  "Sign Up Now"

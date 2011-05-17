@@ -39,6 +39,7 @@ sp:
   signout:    "LaSesion"
   back:       "Volver"
   sure:       "Estas Seguro"
+  help:       ""
   
   error:      
     msg:      "Error"
@@ -57,6 +58,13 @@ sp:
     about:    "sobre"
     contact:  "contacto"
     help:     "ayuda"
+
+  pages:
+    about:    "Sobre nosotros"
+    aboutus:  "Estados experimentado con las communidades "
+    contact:  "Hablar con nosotros"
+    contactus:  "Si desea mas informacion sobre nosotres, pongase en contacto "
+    internationalization: "Por compatibilidad con el idioma, edite si configuracion"
 
   microposts:
     postnew:    "Publicar Nuevo Mensaje!"
