@@ -1,9 +1,9 @@
-<h1>Edit Profile</h1>
+<h1><%= t 'update' %></h1>
 
 <%= render 'form' %>
 <div>
   <br />
   <%= gravatar_image_tag @user.email %>
-  <a href="http://gravatar.com/emails">Update Gravatar Image</a>
+  <a href="http://gravatar.com/emails"><%= t 'update' %> Gravatar</a>
 </div>
 

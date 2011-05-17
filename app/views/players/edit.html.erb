@@ -1,8 +1,8 @@
-<h2>Edit Player Info</h2>
+<h2><%= t 'edit' %></h2>
 
 <nav align="right">
-  <%= link_to 'Show', @player, :class => "quiet" %> |
-  <%= link_to 'Back', players_path, :class => "quiet" %>
+  <%= link_to t('show'), @player, :class => "quiet" %> |
+  <%= link_to t('back'), players_path, :class => "quiet" %>
 </nav>
 
 <%= render 'form' %>

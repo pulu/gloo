@@ -2,20 +2,20 @@
   <%= render 'shared/error_messages', :object => f.object %>
   <div class="field">
   <table>
-    <tr><td><%= :name %></td><td><%= f.text_field :name %></td></tr>
-    <tr><td><%= :breed %></td><td><%= f.text_field :breed %></td></tr>
-    <tr><td><%= :color %></td><td><%= f.text_field :color %></td></tr>
-    <tr><td><%= :gender %></td><td><%= f.text_field :gender %></td></tr>
-    <tr><td><%= :photo %></td><td><%= f.file_field :photo %></td></tr>
-    <tr><td><%= :registration %></td><td><%= f.file_field :registration %></td></tr>
-    <tr><td><%= :dna_test %></td><td><%= f.file_field :dna_test %></td></tr>
-    <tr><td><%= :vet_report %></td><td><%= f.file_field :vet_report %></td></tr>
-    <tr><td><%= :xray %></td><td><%= f.file_field :xray %></td></tr>
+    <tr><td><%= t 'name' %></td><td><%= f.text_field :name %></td></tr>
+    <tr><td><%= t 'horses.breed' %></td><td><%= f.text_field :breed %></td></tr>
+    <tr><td><%= t 'color' %></td><td><%= f.text_field :color %></td></tr>
+    <tr><td><%= t 'horses.gender' %></td><td><%= f.text_field :gender %></td></tr>
+    <tr><td><%= t 'image' %></td><td><%= f.file_field :photo %></td></tr>
+    <tr><td><%= t 'horses.registration' %></td><td><%= f.file_field :registration %></td></tr>
+    <tr><td><%= t 'horses.dna' %></td><td><%= f.file_field :dna_test %></td></tr>
+    <tr><td><%= t 'horses.vet'%></td><td><%= f.file_field :vet_report %></td></tr>
+    <tr><td><%= t 'horses.xray' %></td><td><%= f.file_field :xray %></td></tr>
   </table>
   </div>
 
   <div class="actions">
-    <%= f.submit %><br />
+    <%= f.submit t 'update' %><br />
   </div>
 
 <% end %>

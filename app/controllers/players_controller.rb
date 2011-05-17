@@ -22,10 +22,10 @@ class PlayersController < ApplicationController
   def create
     @title = "Create Player Profile"
     if @player = Player.create(params[:player])
-      flash[:success] = "Profile created"
+      flash[:success] = t('flash.player.created')
       redirect_to( @player )
     else
-      flash[:failure] = "Creation Failed"
+      flash[:failure] = t('flash.player.nocreate')
       @title = "New Player"
       render 'new'
     end
@@ -45,10 +45,10 @@ class PlayersController < ApplicationController
   #--------------
   def update
     if @player.update_attributes(params[:player])
-      flash[:success] = "Profile updated."
+      flash[:success] = t('flash.player.updated')
       redirect_to @player
     else
-      flash[:failure] = "Update failed"
+      flash[:failure] = t('flash.player.noupdate') 
       @title = "Edit Info"
       render 'edit'
     end
@@ -57,13 +57,14 @@ class PlayersController < ApplicationController
   #--------------
   def destroy
     Player.find( params[:id] ).destroy
-    flash[:success] = "Player Data Removed"
+    flash[:success] = t('flash.player.deleted')
     redirect_to players_path
   end
 
   #-------------------------------------------------------------------
   def search
     @players = Player.search parama[:search]
+    flash[:failure] = t('flash.player.notfound') if @players.empty? 
   end
 
   # --------------

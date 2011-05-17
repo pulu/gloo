@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20110512183728) do
     t.string   "email"
     t.string   "encrypted_password"
     t.integer  "access",             :default => 0
+    t.string   "language",           :default => "en"
     t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"

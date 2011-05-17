@@ -1,8 +1,8 @@
-<h2>Edit Horse Info</h2>
+<h2><%= t 'edit' %></h2>
 
 <nav align='right'>
-  <%= link_to 'Show', @horse, :class => "quiet" %> |
-  <%= link_to 'Back', horses_path, :class => "quiet" %>
+  <%= link_to t('show'), @horse, :class => "quiet" %> |
+  <%= link_to t('back'), horses_path, :class => "quiet" %>
 </nav>
 
 <%= render 'form' %>

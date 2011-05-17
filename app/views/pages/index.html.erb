@@ -1,24 +1,28 @@
-<div class="search">
-  <h1>liquidHorse</h1>
+<div>
+  <div class="search">
+    <h1>liquidHorse</h1>
+    <p style="width:200px">
     <%= form_tag pages_path, :method => 'get' do %>
-      <p>
-        <%= text_field_tag :search, params[:search], :class => 'title' %>
-        <%= submit_tag "Search", :name => nil %>
-      </p>
+        <%= text_field_tag :search, params[:search], 
+          :style => "height:32px;width:500px" %>
+        <%= submit_tag t('search'), :name => nil, 
+          :style => "height:32px" %>
+    </p>
     <% end %>
+  </div>
 
-      <table>
-        <tr>
-            <% if @pages.length > 0 %>
-            <th>Name</th><th>Image</th>
-            <% end %>
-        </tr>
-      
-        <% @pages.each do |p| %>
-          <tr>
-            <td><%= link_to p.name, p %></td>
-            <td><%= image_tag p.photo.url(:thumb) %></td>
-          </tr>
+    <table>
+      <tr>
+        <% if @pages.length > 0 %>
+          <th>Name</th><th>Image</th>
         <% end %>
+      </tr>
+      
+      <% @pages.each do |p| %>
+        <tr>
+          <td><%= link_to p.name, p %></td>
+          <td><%= image_tag p.photo.url(:thumb) %></td>
+        </tr>
+      <% end %>
     </table>
 </div>

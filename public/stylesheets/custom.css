@@ -26,10 +26,13 @@ footer nav {
   float: none;
 }
 
-.search {
+/* main page (pages) */
+div.search {
+  height: 200px;
   text-align: center;  
   margin: auto;
 }
+
 
 /* Error Explanations */
 .field_with_errors {

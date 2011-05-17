@@ -2,7 +2,9 @@
   <td>
     <%= link_to feed_item.user.name, feed_item.user, :class => "quiet" %>
     <%= feed_item.content %></br>
-    Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
+    <%= t 'microposts.posted' %>
+    <%= time_ago_in_words(feed_item.created_at) %>
+    <%= t 'ago' %>
   </td>
   <% if current_user?(feed_item.user) %>
     <td>

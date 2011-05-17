@@ -1,27 +1,22 @@
 <nav align="right">
-  <%= link_to 'Add', new_horse_path, :class => "quiet" %>
+  <%= link_to t('add'), new_horse_path, :class => "quiet" %>
 </nav>
-<h1>Horses</h1>
+<h1><%= t "temps" %></h1>
 
 <table>
-  <tr>
-    <th>Name</th><th>Breed</th><th>Color</th> <th>Image</th><th> </th>
-  </tr>
-
-  <% @horses.each do |horse| %>
-    <% image = image_tag horse.photo.url(:thumb) %>
+<% @horses.each do |horse| %>
+  <% image = image_tag horse.photo.url(:thumb) %>
     <tr>
-      <td><%= horse.name %></td>
-      <td><%= horse.breed %></td>
-      <td><%= horse.color %></td>
-      <td><%= link_to image, horse %></td>
+      <td><%= link_to horse.name, horse,  :class => "quiet" %></td>
+      <td><%= horse.breed           %></td>
+      <td><%= link_to image, horse  %></td>
       <% if signed_in? %>
         <% if current_user_id?(horse.user_id) %>
-          <td><%= link_to 'Edit', edit_horse_path(horse) %></td>
+          <td><%= link_to t('edit'), edit_horse_path(horse) %></td>
         <% elsif current_user.admin? %>
-         <td><%= link_to 'Destroy', horse, :method => :delete,
-                                        :confirm => 'Are you sure?', 
-                                        :title => "Delete #{horse.name}" %></td>
+         <td><%= link_to t('delete'), horse, :method => :delete,
+                                        :confirm => "t 'sure'", 
+                                        :title => "t 'delete' #{horse.name}" %></td>
         <% else %> 
           <td></td>
         <% end %>

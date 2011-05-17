@@ -1,0 +1,113 @@
+# localization file for Spanish. 
+
+sp:
+  lh:			    "Caballo"
+  p:     			"Jugador"
+  ps:    			"Jugadores"
+  name:       "Nombre"
+  color:      "Colore"
+  image:      "Imagen"
+  temps: 		  "Caballos"
+  u:          "Usario"
+  listing:    "Lista"
+  age:        "Edad"
+  nationality: "Nacionalidad"
+  email:      "Email"
+  tel:        "Telefono"
+  pictures:   "Imagenes"
+  password:   "Contrasena"
+  confirmation: "Confirmacion"
+  language:   "Idioma"
+  english:    "Ingles"
+  spanish:    "Espanol"
+  ago:        "Hace" 
+  by:         "por"
+  new:        "Nuevo"
+  now:        "Ahora"
+
+  search:     "Buscar"
+  add:        "Nuevo"
+  edit:       "Editar"
+  show:       "Mostrar"
+  delete:     "Eliminar"
+
+  submit:     "Presentar"
+  update:     "Actualizar"
+  signup:     "Registro"
+  signin:     "Ingresar"
+  signout:    "LaSesion"
+  back:       "Volver"
+  sure:       "Estas Seguro"
+  
+  error:      
+    msg:      "Error"
+    nosave:   "No pudo salvar"
+    field:    "Los siguientes tenian errores"
+ 
+  sessions:
+    newuser:  "Nuevo Usario"
+    signupnow:  "Registraje Ahora"
+
+  header:
+    subtitle: "Una communidad de polo"
+    Settings: "Configuracion"
+    Home:     "Inicio"
+  footer:
+    about:    "sobre"
+    contact:  "contacto"
+    help:     "ayuda"
+
+  microposts:
+    postnew:    "Publicar Nuevo Mensaje!"
+    post:       "Publicar"
+    posted:     "Envio"
+
+  horses:
+    breed:      "Raza"
+    breeding:   "Linaje"
+    sire:       "Padme"
+    bloodline:  "Linaje"
+    dam:        "Madre"
+    children:   "Ninos"
+    gender:     "Genero"
+    grandchildren:  "Nietos"
+    registration:   "Registro"
+    vet:            "Informe Veterinario"
+    dna:            "ADN"
+    xray:           "RayosX"
+    breeder:        "Obtenor"
+    lister:         "Creador" 
+
+  players:
+    tournaments:  "Torneos"
+    team:         "Equipo"
+    handicap:     "Desventaja"
+    creator:      "Creador"
+    cv:           "CV"
+    profile:      "Perfil"
+    contact:      "Contacto"
+
+  flash:
+    user:
+      signedup: "Bienvenida "
+      updated:  "Perfil actualizado!"
+      deleted:  "Usario eliminado!"
+    horse:
+      updated:  "Perfil actualizado!"
+      noupdate: "Error de actualization!"
+      deleted:  "Datos caballelo retirado."
+      notfound: "Sin Caballos !"
+    player:
+      created:  "Perfil creado!"
+      nocreate: "La creation de error."
+      updated:  "Perfil actualizado!"
+      notfound: "Ningun de los jugadores!"
+    micropost:
+      created:  "Entrada creado!"
+    session:
+      invalid:  "Combinacion correo/contrasena no es valida!"
+  
+  notice:  
+    horse:
+      created: "Creo la informacion caballo."
+  

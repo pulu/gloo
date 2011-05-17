@@ -5,7 +5,7 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(params[:micropost])
     if @micropost.save
-      flash[:success] = "Blog Post created!"
+      flash[:success] = t 'flash.micropost.created' 
     else
       @feed_items = []
     end

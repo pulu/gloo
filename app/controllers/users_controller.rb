@@ -22,6 +22,8 @@ class UsersController < ApplicationController
       @micropost = @user.microposts.new
       @feed_items = @user.feed.paginate( 
               :page => params[:page], :per_page => 10)
+    else
+      redirect_to signin_path
     end
     @title = @user.name
   end
@@ -31,7 +33,7 @@ class UsersController < ApplicationController
     @user = User.new( params[:user])
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome " + @user.name + "!"
+      flash[:success] = t("flash.user.signedup") + @user.name + "!"
       redirect_to @user
     else
       @title = "Sign Up"
@@ -47,7 +49,7 @@ class UsersController < ApplicationController
   # -----------
   def update
     if @user.update_attributes( params[:user])
-      flash[:success] = "Profile Updated."
+      flash[:success] = t('flash.user.updated')
       redirect_to @user
     else
       @title = "Edit Profile"
@@ -58,13 +60,12 @@ class UsersController < ApplicationController
   # -----------------
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User deleted."
+    flash[:success] = t("flash.user.deleted")
     redirect_to users_path
   end
 
   #--------------------------------------------------
   private
-
 
   def correct_user
     @user = User.find(params[:id])

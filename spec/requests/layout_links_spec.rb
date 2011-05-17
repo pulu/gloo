@@ -33,6 +33,11 @@ describe "LayoutLinks" do
     get '/horses'
     response.should have_selector('title', :content => "Horses")
   end
+  #------ player pages 
+  it "should have a players page at '/players'" do
+    get '/players'
+    response.should have_selector('title', :content => "Players")
+  end
   #------ session info
   describe "when not signed in" do
    it "should have a signin link" do
@@ -55,10 +60,10 @@ describe "LayoutLinks" do
       response.should have_selector("a",  :href => signout_path,
                                           :content => "SignOut")
     end
-    it "should have a profile link" do
+    it "should have a name linking to user's profile page" do
       visit root_path
       response.should have_selector("a",  :href => user_path(@user),
-                                          :content => "Profile")
+                                          :content => @user.name)
     end
   end
 

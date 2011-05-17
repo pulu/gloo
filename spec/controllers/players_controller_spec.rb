@@ -3,26 +3,22 @@ require 'spec_helper'
 describe PlayersController do
   render_views
 
-  describe "GET 'new'" do
-    it "should be successful" do
-      get :new 
-      response.should be_success
-    end
-
-    it "should have the right title" do
-      get :new 
-      response.should have_selector("title", :content => "Player") 
-    end
-  end
-  
   # ------------
-  describe "authentication of edit/update pages" do
+  describe "authentication of pages based on signin and ownership" do
     before(:each) do
       @player = Factory(:player)
       @user   = Factory(:user)
     end
   
     describe "for non-signed-in users" do
+      it "should allow listing" do
+        get :index 
+        response.should be_success 
+      end
+      it "should deny access to creation" do
+        get :new 
+        response.should redirect_to( signin_path )
+      end
       it "should deny access to edit" do
         get :edit, :id => @player, :user => {}
         response.should redirect_to( signin_path )
@@ -37,6 +33,10 @@ describe PlayersController do
       before(:each) do
         test_sign_in(@user)
         @player.user_id += 1 if @player.user_id == @user.id 
+      end
+      it "allow creation" do
+        get :new 
+        response.should have_selector("title", :content => "Player") 
       end
       it "should deny access to edit" do
         get :edit, :id => @player, :user => @user 

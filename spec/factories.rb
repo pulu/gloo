@@ -7,7 +7,7 @@ Factory.define :user do |user|
 end
 
 Factory.sequence :email do |n|
-  "person-#{n}@example.com"
+  "person#{n}@example.com"
 end
 
 Factory.define :horse do |horse|
@@ -43,8 +43,6 @@ end
 
 Factory.define :micropost do |micropost|
   micropost.content     "Foo Bar"
-  micropost.about_id    1 
-  micropost.category    0 
   micropost.association :user
 end
 

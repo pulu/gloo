@@ -7,7 +7,6 @@ describe Micropost do
     @user = Factory(:user)
     @attr = {
       :content => "Value For content",
-      :about_id => 1
     }
   end
 
@@ -38,9 +37,6 @@ describe Micropost do
     end
     it "should not have too long content" do
       @user.microposts.build(:content => "x" * 141).should_not be_valid
-    end
-    it "should require a player_id" do
-      @user.microposts.build(:player_id => " ").should_not be_valid
     end
   end
 

@@ -1,5 +1,111 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+# Localization file for English.
 
 en:
-  hello: "Hello world"
+  p:          "Player"
+  ps:         "Players"
+  lh:         "Horse"
+  u:          "User"
+  listing:    "Listing"
+  name:       "Name"
+  age:        "Age"
+  temps:      "Horses"
+  nationality: "Nationality"
+  email:      "Email"
+  tel:        "Tel"
+  color:      "Color"
+  image:      "Image"
+  pictures:   "Pictures"
+  password:   "Password"
+  confirmation: "Confirmation"
+  language:   "language"
+  english:    "English"
+  spanish:    "Spanish"
+  ago:        "ago" 
+  by:         "by"
+  new:        "New"
+  now:        "Now"
+
+  search:     "Search"
+  submit:     "Submit"
+  add:        "Add"
+  edit:       "Edit"
+  show:       "Show"
+  update:     "Update"
+  signup:     "Sign Up"
+  signin:     "SignIn"
+  signout:    "SignOut"
+  delete:     "Delete"
+  back:       "Back"
+  sure:       "Are You Sure?"
+
+  error:      
+    msg:      "Error"
+    nosave:   "Could not Save"
+    field:    "The following fields had errors "
+
+  header:
+    subtitle: "A polo community"
+    Settings: "Settings"
+    Home:     "Home"
+  footer:
+    about:    "about"
+    contact:  "contact"
+    help:     "help"
+  
+  sessions:
+    newuser:    "New User"
+    signupnow:  "Sign Up Now"
+  
+  microposts:
+    postnew:    "Post New Message"
+    post:       "Post"
+    posted:     "Posted"
+
+  horses:
+    breed:      "Breed"
+    breeding:   "Breeding"
+    sire:       "Sire"
+    bloodline:  "Bloodline"
+    dam:        "Dam"
+    children:   "Children"
+    gender:     "Gender"
+    grandchildren:  "Grandchildren"
+    registration:   "Registration"
+    vet:            "Vet report"
+    dna:            "DNA Test"
+    xray:           "Xray"
+    breeder:        "Breeder"
+    lister:         "Lister" 
+
+  players:
+    tournaments:  "Tournaments"
+    team:         "Team"
+    handicap:     "Handicap"
+    creator:      "Creator"
+    cv:           "CV"
+    profile:      "Profile"
+    contact:      "Contact"
+
+  flash:
+    user:
+      signedup: "Welcome "
+      updated:  "Profile updated!"
+      deleted:  "User Deleted!"
+    horse:
+      updated:  "Profile updated!"
+      noupdate: "Update failed!"
+      deleted:  "Horse Data Removed."
+      notfound: "No Horses found!"
+    player:
+      created:  "Profile created!"
+      nocreate: "Creation Failed."
+      updated:  "Profile Updated!"
+      notfound: "No Players found!"
+    micropost:
+      created:  "Blog Post Created!"
+    session:
+      invalid:  "Invalid email/password combination!"
+  
+  notice:  
+    horse:
+      created: "Created horse info."

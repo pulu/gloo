@@ -2,9 +2,9 @@
   <h2 align="center"><%= @user.name %></h2>
     <%= gravatar_for @user %>
   <table>
-    <tr><td><b>Name:</b></td><td><%= @user.name %></td></tr>
-    <tr><td><b>Email:</b></td><td><%= @user.email %></td></tr>
-    <tr><td><b>Posts:</b></td><td><%= @user.microposts.count %></td></tr>
+    <tr><td><b><%= t 'name' %>:</b></td><td><%= @user.name %></td></tr>
+    <tr><td><b><%= t 'email' %>:</b></td><td><%= @user.email %></td></tr>
+    <tr><td><b><%= t 'microposts.post' %>s:</b></td><td><%= @user.microposts.count %></td></tr>
   </table>
 </div>
 

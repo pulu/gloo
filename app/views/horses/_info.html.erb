@@ -5,21 +5,21 @@
     <% dna_test   = @horse.dna_test.url %>
     <% registration = @horse.registration.url %>
     <% xray       = @horse.xray.url %>
-    <%= link_to 'Registration', registration, :class => "quiet" %> |
-    <%= link_to 'DNA Test', dna_test, :class => "quiet" %> |
-    <%= link_to 'Vet Report', vet_report, :class => "quiet" %> |
-    <%= link_to 'Xray', xray, :class => "quiet" %> |
-    <%= link_to 'Edit', edit_horse_path(@horse), :class => "quiet" %> |
-    <%= link_to 'Back', horses_path, :class => "quiet" %>
+    <%= link_to t('horses.registration'),  registration, :class => "quiet" %> |
+    <%= link_to t('horses.dna'),           dna_test,     :class => "quiet" %> |
+    <%= link_to t('horses.vet'),           vet_report,   :class => "quiet" %> |
+    <%= link_to t('horses.xray'),          xray,         :class => "quiet" %> |
+    <%= link_to t('edit'), edit_horse_path(@horse),      :class => "quiet" %> |
+    <%= link_to t('back'), horses_path,                  :class => "quiet" %>
   </nav>
   <%= image_tag @horse.photo.url(:medium) %>
   
   <table>
-    <tr><td><b>Name:</b></td><td><%= @horse.name %></td></tr>
-    <tr><td><b>Breed:</b></td><td><%= @horse.breed %></td></tr>
-    <tr><td><b>Color:</b></td><td><%= @horse.color %></td></tr>
-    <tr><td><b>Gender:</b></td><td><%= @horse.gender %></td></tr>
-    <tr><td><b>Breeder:</b></td><td><%= @horse.breeder_id %></td></tr>
-    <tr><td><b>Lister:</b></td><td><%= @horse.user_id %></tr</td>
+    <tr><td><b><%= t 'name'  %>:</b></td><td><%= @horse.name %></td></tr>
+    <tr><td><b><%= t 'color' %></b></td><td><%= @horse.color %></td></tr>
+    <tr><td><b><%= t 'horses.breed' %>:</b></td><td><%= @horse.breed %></td></tr>
+    <tr><td><b><%= t 'horses.gender'%>:</b></td><td><%= @horse.gender %></td></tr>
+    <tr><td><b><%= t 'horses.breeder'%>:</b></td><td><%= @horse.breeder_id %></td></tr>
+    <tr><td><b><%= t 'horses.lister'%>:</b></td><td><%= @horse.user_id %></tr</td>
   </table>
 </div>

@@ -46,35 +46,47 @@ describe UsersController do
       @user = Factory(:user)
     end
 
-    it "should be successful" do
-      get :show, :id => @user
-      response.should be_success
-    end
-    it "should find the right user" do
-      get :show, :id => @user
-      assigns(:user).should == @user
-    end
-    it "should have the right title" do
-      get :show, :id => @user
-      response.should have_selector( 'title', :content => @user.name )
-    end
-    it "should include the user's name" do
-      get :show, :id => @user
-      response.should have_selector('h1', :content => @user.name )
-    end
-    it "should have a Gravatar" do
-      get :show, :id => @user
-      response.should have_selector("h1>img", :class => "gravatar")
+    describe "for non signed-in users" do
+      it "should redirect to signin page" do
+        get :show, :id => @user
+        response.should redirect_to( signin_path )
+      end
     end
 
-    it "should show the users blog-posts" do
-      p1 = Factory(:micropost, :user => @user, :content => "Foo Bar")
-      p2 = Factory(:micropost, :user => @user, :content => "Goo Hoo")
-      get :show, :id => @user
-      response.should have_selector("span.content", :content => mp1.content )
-      response.should have_selector("span.content", :content => mp2.content )
-    end
+    describe "for signed in users" do
+      before(:each) do
+        test_sign_in( @user )
+      end
 
+      it "should be successful" do
+        get :show, :id => @user
+        response.should be_success
+      end
+      it "should find the right user" do
+        get :show, :id => @user
+        assigns(:user).should == @user
+      end
+      it "should have the right title" do
+        get :show, :id => @user
+        response.should have_selector( 'title', :content => @user.name )
+      end
+      it "should include the user's name" do
+        get :show, :id => @user
+       response.should have_selector('h2', :content => @user.name )
+      end
+      it "should have a Gravatar" do
+        get :show, :id => @user
+        response.should have_selector("img", :class => "gravatar")
+      end
+
+      it "should show the users blog-posts" do
+        p1 = Factory(:micropost, :user => @user, :content => "Foo Bar")
+        p2 = Factory(:micropost, :user => @user, :content => "Goo Hoo")
+        get :show, :id => @user
+        response.should have_selector("td", :content => p1.content )
+        response.should have_selector("td", :content => p2.content )
+      end
+    end 
   end
 
   # ---------------------

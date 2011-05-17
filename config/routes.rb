@@ -1,4 +1,4 @@
-Pulu::Application.routes.draw do
+Gloo::Application.routes.draw do
   get "images/new"
 
   resources :users

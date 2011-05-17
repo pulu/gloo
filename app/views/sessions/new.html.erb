@@ -1,18 +1,19 @@
-<h1>Sign In</h1>
+<h1><%= t 'signin' %></h1>
 
 <%= form_for( :session, :url => sessions_path) do |f| %>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label t 'email' %><br />
     <%= f.text_field :email%>
   </div>
   <div class="field">
-    <%= f.label :password%><br />
+    <%= f.label t 'password' %><br />
     <%= f.text_field :password%>
   </div>
   <div class="actions">
-    <%= f.submit "Sign in" %>
+    <%= f.submit t 'signin' %>
   </div>
 <% end %>
 
-<p>New User? <%= link_to "Sign Up Now!", signup_path %></p>
+<p><%= t('sessions.newuser') %>
+<%= link_to t('sessions.signupnow'), signup_path %></p>
 

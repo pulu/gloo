@@ -3,19 +3,6 @@ require 'spec_helper'
 describe HorsesController do
   render_views
 
-  #------------
-  describe "GET 'new'" do
-    it "should be successful" do
-      get :new
-      response.should be_success
-    end
-
-    it "should have the right title" do
-      get :new
-      response.should have_selector("title", :content => "Horse") 
-    end
-  end
-
   # -------------
   describe "authentication of edit/update pages" do
     before(:each) do
@@ -24,6 +11,14 @@ describe HorsesController do
     end
 
     describe "for non-signed-in users" do
+      it "should allow listing" do
+        get :index
+        response.should be_success 
+      end
+      it "should deny access to create" do
+        get :new
+        response.should redirect_to(signin_path) 
+      end
       it "should deny access to edit" do
         get :edit, :id => @horse, :user => {}
         response.should redirect_to( signin_path )
@@ -37,8 +32,12 @@ describe HorsesController do
     describe "for signed-in non-owners " do
       before(:each) do
         @user = Factory(:user, :email => "a@b.com", :access => 0 )
-        @horse = Factory(:horse, :name => "Test", :owner_id => @user.id + 1 )
+        @horse = Factory(:horse, :name => "Test", :user_id => @user.id + 1 )
         test_sign_in(@user)
+      end
+      it "should allow creation" do
+        get :new
+        response.should have_selector("title", :content => "Horse") 
       end
       it "should deny access to edit" do
         get :edit, :id => @horse, :user => @user 

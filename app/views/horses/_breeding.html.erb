@@ -1,19 +1,19 @@
 <div>
-  <h4 align="center">Breeding</h4>
+  <h4 align="center"><%= t 'horses.breeding'%></h4>
   <% @sire = sire %>
   <% sire_image = image_tag @sire.photo.url(:small) %>
   <%= link_to sire_image, @sire %>
-  <p><b>Sire:</b><%= @sire.name %><br />
-  <b>Bloodline: </b><tab><%= sire.bloodline %></p>
+  <p><b><%= t 'horses.sire' %>: </b><%= @sire.name %><br />
+  <b><%= t 'horses.bloodline' %>: </b><tab><%= sire.bloodline %></p>
 
   <% @dam = dam %>
   <% dam_image = image_tag @dam.photo.url(:small) %>
   <%= link_to dam_image, @dam %>
-  <p><b>Dam: </b><%= @dam.name %> <br />
-  <b>Bloodline: </b><tab><%= dam.bloodline %><p>
+  <p><b><%= t 'horses.dam' %>: </b><%= @dam.name %> <br />
+  <b><%= t 'horses.bloodline' %>: </b><tab><%= dam.bloodline %><p>
 
   <hr>
-  <h5 align="center">Children</h5>
+  <h5 align="center"><%= t 'horses.children' %></h5>
   <% @children = children %>
   <% @children.each do |child| %>
     <%= link_to child.name, child %><br \>
@@ -21,7 +21,7 @@
   <p></p>
 
   <hr>
-  <h5 align="center">GrandChildren</h5>
+  <h5 align="center"><%= t 'horses.grandchildren' %></h5>
   <% @grandchildren = grandchildren %>
   <% @grandchildren.each do |grandchild| %>
     <%= link_to grandchild.name, grandchild %><br \>

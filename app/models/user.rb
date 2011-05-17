@@ -8,6 +8,7 @@
 #  email              :string(255)
 #  encrypted_password :string(255)
 #  access             :integer         default(0)
+#  language           :string          default('en')
 #  salt               :string(255)
 #  created_at         :datetime
 #  updated_at         :datetime
@@ -16,7 +17,7 @@
 require 'digest'
 class User < ActiveRecord::Base
   attr_accessor   :password
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :language
 
   has_many :microposts, :dependent => :destroy
   has_many :horses

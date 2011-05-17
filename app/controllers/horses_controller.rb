@@ -47,10 +47,10 @@ class HorsesController < ApplicationController
   def update
     @title = "Update Horse Info"
     if @horse.update_attributes(params[:horse])
-      flash[:success] = "Profile updated."
+      flash[:success] = t('flash.horse.updated')
       redirect_to @horse 
     else 
-      flash[:failure] = "Update failed"
+      flash[:failure] = t('flash.horse.noupdate') 
       @title = "Edit Info"
       render 'edit'
     end
@@ -60,13 +60,14 @@ class HorsesController < ApplicationController
   def destroy
     @title = "Delete Horse Info"
     Horse.find( params[:id] ).destroy
-    flash[:success] = "Horse Data Removed"
+    flash[:success] = t('flash.horse.deleted')
     redirect_to horses_path
   end
 
   #-------------------------------------------------------------------
   def search
-    @horses = Horse.search parama[:searcs]
+    @horses = Horse.search parama[:search]
+    flash[:failure] = t('flash.horse.notfound')
   end
 
   # -----------------------------
@@ -74,7 +75,7 @@ class HorsesController < ApplicationController
 
   def correct_user 
     @horse = Horse.find(params[:id])
-    redirect_to root_path unless current_user_id?(@horse.owner_id) 
+    redirect_to root_path unless current_user_id?(@horse.user_id) 
   end
 
   def admin_user
