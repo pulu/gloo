@@ -14,18 +14,35 @@
 
   <hr>
   <h5 align="center"><%= t 'horses.children' %></h5>
-  <% @children = children %>
-  <% @children.each do |child| %>
-    <%= link_to child.name, child %><br \>
+  <% @list = children %>
+  <% @males = males @list %>
+  <% @females = males @list, false %>
+  <% @males.each do |child| %>
+    <%= link_to child.name, child, :class => 'quiet' %>
+    <%= child.gender %><br \>
+  <% end %>
+  <br \>
+  <% @females.each do |child| %>
+    <%= link_to child.name, child, :class => 'quiet' %>
+    <%= child.gender %><br \>
   <% end %>
   <p></p>
 
   <hr>
   <h5 align="center"><%= t 'horses.grandchildren' %></h5>
-  <% @grandchildren = grandchildren %>
-  <% @grandchildren.each do |grandchild| %>
-    <%= link_to grandchild.name, grandchild %><br \>
+  <% @list = grandchildren %>
+  <% @males = males @list %>
+  <% @females = males @list, false %>
+  <% @males.each do |child| %>
+    <%= link_to child.name, child, :class => 'quiet' %>
+    <%= child.gender %><br \>
   <% end %>
+  <br \>
+  <% @females.each do |child| %>
+    <%= link_to child.name, child, :class => 'quiet' %>
+    <%= child.gender %><br \>
+  <% end %>
+  <p></p>
 
 </div>
 

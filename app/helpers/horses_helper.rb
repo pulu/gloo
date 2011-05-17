@@ -36,4 +36,17 @@ module HorsesHelper
     grandchildren.uniq
   end
 
+  # return subset of males (if male == false, females)
+  def males(horses, male = true)
+    females = []
+    males = []
+    horses.each do |horse|
+      if horse.gender =~ /mare/i
+        females.push horse 
+      else 
+        males.push horse
+      end
+    end
+    male ? males : females  
+  end
 end
