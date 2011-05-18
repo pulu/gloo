@@ -1,7 +1,20 @@
-<nav align="right">
-  <%= link_to t('add'), new_horse_path, :class => "quiet" %>
-</nav>
-<h1><%= t "temps" %></h1>
+<div class="span-14">
+  <h1><%= t "hs" %></h1>
+</div>
+
+<div class="span-6">
+  <%= form_tag horses_path, :method => 'get' do %>
+    <%= text_field_tag :search, params["search"] %>
+    <%= submit_tag t('search'), :name => nil %> 
+  <% end %>
+</div>
+
+<div class="span-4 last">
+  <nav align="right">
+    <%= link_to t('add'), new_horse_path, :class => "quiet" %>
+  </nav>
+</div>
+<hr>
 
 <table>
 <% @horses.each do |horse| %>

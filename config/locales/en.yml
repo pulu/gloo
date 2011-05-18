@@ -185,6 +185,7 @@
 # Custom Localizations for English.
 
   h:          "Horse"
+  hs:         "Horses"
   p:          "Player"
   ps:         "Players"
   u:          "User"

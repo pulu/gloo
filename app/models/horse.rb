@@ -44,11 +44,25 @@ class Horse < ActiveRecord::Base
       :medium => "400x320>"
      },
      :url => "/images/photos/:basename.:style.:extension",
-     :path => ":rails_root/public/images/photos/:basename.:style.:extension"
-  has_attached_file :vet_report
-  has_attached_file :xray 
-  has_attached_file :dna_test
-  has_attached_file :registration
+     :path => ":rails_root/public/docs/horse/:basename.:style.:extension"
+  has_attached_file :vet_report,
+     :url => "/docs/horse/:basename.:style.:extension",
+     :path => ":rails_root/public/docs/horse/:basename.:style.:extension"
+  has_attached_file :xray, 
+     :url => "/docs/horse/:basename.:style.:extension",
+     :path => ":rails_root/public/docs/horse/:basename.:style.:extension"
+  has_attached_file :dna_test,
+     :url => "/docs/horse/:basename.:style.:extension",
+     :path => ":rails_root/public/docs/horse/:basename.:style.:extension"
+  has_attached_file :registration,
+     :url => "/docs/horse/:basename.:style.:extension",
+     :path => ":rails_root/public/docs/horse/:basename.:style.:extension"
+
+  #-----------------------------
+  def self.search(search, page)
+    paginate  :per_page => 10, :page => page,
+              :conditions => ['name like ?', "%#{search}%"]
+  end
 
 end
 

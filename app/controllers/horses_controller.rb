@@ -35,7 +35,12 @@ class HorsesController < ApplicationController
   #--------------
   def index
     @title = "Horses"
-    @horses = Horse.paginate(:page => params[:page])
+    if ( params[ :search ])
+      @horses = Horse.search(params[:search], params[:page])
+    else 
+      @horses = Horse.paginate(:page => params[:page])
+    end
+    flash[:failure] = t('flash.horse.notfound') if @horses.length < 1
   end
 
   #--------------
@@ -65,12 +70,6 @@ class HorsesController < ApplicationController
   end
 
   #-------------------------------------------------------------------
-  def search
-    @horses = Horse.search parama[:search]
-    flash[:failure] = t('flash.horse.notfound')
-  end
-
-  # -----------------------------
   private
 
   def correct_user 

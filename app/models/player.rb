@@ -36,19 +36,21 @@ class Player < ActiveRecord::Base
   # Paperclip
   has_attached_file :photo,
     :styles => {
-      :thumb => "40x32#",
-      :small => "100x80",
+      :thumb => "60x48#",
+      :small => "150x120",
       :medium => "400x320>"
      },
      :url => "/images/photos/player/:basename.:style.:extension",
      :path => ":rails_root/public/images/photos/player/:basename.:style.:extension"
-  has_attached_file :cv
+  has_attached_file :cv,
+     :url => "/docs/player/:basename.:style.:extension",
+     :path => ":rails_root/public/docs/player/:basename.:style.:extension"
 
   
   #----------------------------------------------------------------
   # search for player name
-  def self.search( search )
-    search_condition = "%" + search + "%"
-    find( :all, :conditions => ['name LIKE ?', search_condition ]) 
+  def self.search( search, page )
+    paginate  :per_page => 10, :page => page,
+              :conditions => ['name LIKE ?', "%#{search}%"]) 
   end
 end

@@ -34,7 +34,11 @@ class PlayersController < ApplicationController
   #--------------
   def index
     @title = "Players"
-    @players = Player.paginate(:page => params[:page])
+    if (params[:search])
+      @players = Player.search(params[:search], params[:page])
+    else
+      @players = Player.paginate(:page => params[:page])
+    end
   end
 
   #--------------

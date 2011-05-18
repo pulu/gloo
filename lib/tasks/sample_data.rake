@@ -18,7 +18,8 @@ namespace :db do
                     :markings => "White socks",
                     :photo_file_name => "horse_1.jpg",
                     :photo_content_type => "image/jpg",
-                    :photo_file_size => 4661
+                    :photo_file_size => 4661,
+                    :xray_file_name => "sample.jpg"
                   )
 
     @no_breeders = 10
@@ -49,7 +50,12 @@ namespace :db do
                     :sire_id => sire,
                     :bloodline => bloodline,
                     :dam_id => dam,
-                    :markings => markings)
+                    :markings => markings,
+                    :xray_file_name => "sample.pdf"
+                    :dna_test_file_name => "sample.pdf"
+                    :vet_report_file_name => "sample.pdf"
+                    :registration_file_name => "sample.pdf"
+                    )
 
     end
      
@@ -67,7 +73,7 @@ namespace :db do
                     :photo_file_name => "player_0.jpg",
                     :photo_content_type => "image/jpg",
                     :photo_file_size => 4661,
-                    :cv_file_name => "player_0_cv.pdf",
+                    :cv_file_name => "sample.pdf",
                     :professional => true)
 
     @no_players = 15
@@ -86,7 +92,7 @@ namespace :db do
       photo_file_name = "player_#{photo_no}.jpg"
       photo_content_type = "image/jpg"
       photo_file_size = 4661
-      cv_file_name = "player_0_cv.pdf"
+      cv_file_name = "sample.pdf"
       professional = %w{true false}.shuffle.first 
       age = (18..40).to_a.shuffle.first
       Player.create!(:name => name,
@@ -117,7 +123,15 @@ namespace :db do
     User.create!(         :name     => "Raj",
                           :email    => "rajkumar.projects.db@gmail.com",
                           :password => "foobar",
-                          :password_confirmation   => "foobar")
+                          :password_confirmation   => "foobar",
+                          :language => "es")
+    
+    User.create!(         :name     => "Matias",
+                          :email    => "terranovaverde@gmail.com",
+                          :password => "database",
+                          :password_confirmation   => "database",
+                          :language => "en")
+
 
     @no_users.times do |n| 
       name = Faker::Name.first_name

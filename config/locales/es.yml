@@ -186,6 +186,7 @@
 # custom localizations 
 #
   h:          "Caballo"
+  hs:         "Caballos"
   ps:    			"Jugadores"
   u:          "Usario"
   name:       "Nombre"
