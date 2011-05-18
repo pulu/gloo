@@ -51,6 +51,6 @@ class Player < ActiveRecord::Base
   # search for player name
   def self.search( search, page )
     paginate  :per_page => 10, :page => page,
-              :conditions => ['name LIKE ?', "%#{search}%"]) 
+              :conditions => ['name LIKE ?', "%#{search}%"] 
   end
 end
