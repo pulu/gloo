@@ -32,6 +32,7 @@ class HorsesController < ApplicationController
     end
   end
 
+
   #--------------
   def index
     @title = "Horses"

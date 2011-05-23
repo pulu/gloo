@@ -10,7 +10,6 @@
 #  postable_type :string(255)
 #  created_at    :datetime
 #  updated_at    :datetime
-#
 
 class Micropost < ActiveRecord::Base
   attr_accessible :content, :postable_id, :postable_type
