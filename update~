@@ -1,0 +1,106 @@
+A Summary of where we are possible directions
+---------------------------------------------
+The best way to describe the scenario would be to use an analogy: 
+
+Think of web-sites as donut-shops, with each shop producing 
+a slightly different kind. Because these shops are so popular,
+people have developed donut-making machines, that make setting 
+up a donut shop quick and fast.
+
+In your case, you want to set up a shop that sells something 
+slightly different: it is like a donut, but also like a bagel; 
+it is spicy and steamed instead of sweet and deep-fried. 
+
+Donut machines can be tweaked a little, so if we want to have 
+the advantage of having something working quickly, you can use
+a donut-machine to make this new product, but have to live with 
+the limitations of what donut-machines will allow. Maybe they 
+allow spicy versions, but but don't allow steaming. We'll have 
+to live with only deep-frying in water instead of oil. 
+
+So the choice is to live with this limitation and have something
+working quickly. The other option is to have someone who knows
+how these machines are built to build a custom machine that 
+produces exactly what you want. It will however take longer 
+to go to market and will be harder to maintain as it is 
+custom-made. 
+
+Going with this analogy the reason we started out with a 
+donut-machine is because we are still unsure what out 
+final-product will look like, what people will like or want, and what
+else is out there that is similar to the product we have in mind. A
+donut-machine may suffice but it may not.  It is not a good idea to
+start building a custom machine until we have  a fairly good idea
+about what we can and can-not live with. 
+
+
+--------
+Going back to the ream of computers, there are two limitations that
+you should understand about web-development frameworks. They are
+builtwith speed to market, maintainability and efficiency in mind. So
+they are built with some assumptions:
+
+1) Web-sites don't need the interactivity of laptop applications and
+the limited user-interactivity javascript and jQuery provide are
+sufficient. (features like drag-and-drop, undo/redo are not really
+needed). 
+
+
+2) Database schemas (or structures) will remain fairly constant and
+any changes will be carefully monitored and engineered. Users can add,
+edit and delete data, but only administrators can change the structure
+of the database itself.	(This is for good reason. Unforeseen changes
+to the database structure can cause chaos in web-sites). 
+
+---------
+
+Given these limitations, there are two options to proceed:
+
+A) Use traditional web-development frameworks. 
+	o) Javascript and jQuery can be used to provide some
+	user-interactivity where the user uses dynamic forms and templates
+	to create web-sites (such as cars, horses, wood, etc) with a limited
+	choice in layout.	More templates can be added later improving
+	choice.
+
+	o) They can be given the illusion of changing the database and
+		adding, modifying and creating tables. Under-the-hood, we can use
+		a more static database-structure, but user will not be aware of
+		this. 
+
+	Pros/Cons: Not as quick-to-build as a vanilla web-site, but faster
+						 than building without a framework. Some limits to
+						 functionality and down-the-road, flexibility.
+
+
+B) Use a full-blown language without frameworks (java, ruby without
+	rails, Google Windows Toolkit etc) to provide exactly what we want.
+	o) Full drag-and-drop functionality.
+	o) User can work with or without templates
+	o) The user in-fact has their own database 
+	
+	Longer development cycle (3 times longer than a vanilla web-site and
+	twice as long as a non-vanilla site created with frameworks). 
+
+
+-----------------------------------------
+
+And a final caveat: when creating a new product, if the product is
+clearly conceived and has been made many times before, it is possible
+to chart out a clear path and timetable to production. When the
+product itself is being defined as we go along it is harder to chart
+out the path to production, and there will be hiccups and changes in
+direction along the way.
+
+So if you want to be a player in this game of coming up with a novel
+product to market, you have to have the stomach and the pockets for a
+slightly bumpy ride. We can get to the destination, all right, but the
+ride will not be totally smooth. Please think carefully about this. If
+you think that you have the stomach and the pockets to do this -you've
+paid me for one week after six weeks of work- let me know and we can
+chat. 
+
+
+ 
+
+
